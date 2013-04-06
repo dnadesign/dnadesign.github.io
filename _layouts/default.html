@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ page.title }} - Labs - DNA Designed Communications </title>
+    <title>{{ page.title }} -   Labs - DNA Designed Communications </title>
     {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
     
     <!-- Enable responsive viewport -->
@@ -12,12 +12,12 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="all">
 
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
     <link href="rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 
@@ -26,63 +26,66 @@
   <body>
     <header id="header">
       <div class="wrapper">
-        <a href="/" class="logo"><img src="assets/images/logo.png" alt="DNA Design" /></a>
+        <a href="/" class="logo"><img src="/assets/images/logo.png" alt="DNA Design" /></a>
             
         <p class="tagline">At DNA we define and design experiences. On this site, we discuss the technical side of those experiences. Welcome to <strong>labs.dna.co.nz</strong></p>
 
         <div class="search-tags">
-          <ul class="tag_box inline">
-            {% assign tags_list = site.tags %}  
-            {% if tags_list.first[0] == null %}
-              {% for tag in tags_list %} 
-                <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }} <span>{{ site.tags[tag].size }}</span></a></li>
-              {% endfor %}
-            {% else %}
-              {% for tag in tags_list %} 
-                <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }} <span>{{ tag[1].size }}</span></a></li>
-              {% endfor %}
-            {% endif %}
-          </ul>
+         
         </div>
 
         <a href="/rss.xml" class="rss-feed">RSS Feed</a>
+
+        <div class="tags">
+          <p>Categories:</p>
+          <ul class="inline">
+              {% assign tags_list = site.tags %}  
+              {% if tags_list.first[0] == null %}
+                {% for tag in tags_list %} 
+                  <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }}<span>{{ site.tags[tag].size }}</span></a></li>
+                {% endfor %}
+              {% else %}
+                {% for tag in tags_list %} 
+                  <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }}<span>{{ tag[1].size }}</span></a></li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
       </div>
     </header>
 
-    <div class="wrapper">
-      <div class="content" role="main">
-        {{ content }}
-      </div>
+    <div class="content" role="main">
+       {{ content }}
     </div>
-
+    
     <footer id="footer">
       <div class="wrapper">
         <h2>Who we are</h2>
 
         <ul class="people">
           <li>
-            <img src="assets/images/john.png" alt="John Milmine" />
+            <img src="/assets/images/john.png" alt="John Milmine" />
 
             <h3>John Milmine<a href="http://twitter.com/pitchandtone">@pitchandtone</a></h3>
             <p>Technical Director</p>
           </li>
 
           <li>
-            <img src="assets/images/wilr.png" alt="Will Rossiter" />
+            <img src="/assets/images/wilr.png" alt="Will Rossiter" />
 
             <h3>Will Rossiter<a href="http://twitter.com/wilr">@wilr</a></h3>
             <p>Senior Developer</p>
           </li>
 
           <li>
-            <img src="assets/images/tony.png" alt="Tony Watson" />
+            <img src="/assets/images/tony.png" alt="Tony Watson" />
 
             <h3>Tony Watson<a href="http://twitter.com/Tonymcbony">@tonymcbony</a></h3>
             <p>Developer</p>
           </li>
 
           <li>
-            <img src="assets/images/james.png" alt="James Ayers" />
+            <img src="/assets/images/james.png" alt="James Ayers" />
 
             <h3>James Ayers</h3>
             <p>Developer</p>
@@ -96,5 +99,7 @@
     </footer>
     
     {% include stats.html %}
+    <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+    <script src="assets/javascript/site.js"></script>
   </body>
 </html>

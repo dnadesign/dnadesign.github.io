@@ -82,7 +82,7 @@ body {
 	color: #2b2b2b;
 	line-height: 1.8em;
 	font-size-adjust: 0.46;
-	padding-top: 50px;
+	padding-top: 80px;
 	background: #f0f0f1;
 }
 
@@ -116,6 +116,10 @@ a {
 	text-decoration: none;
 	color: #E51A86;
 }
+	a:hover,
+	a:focus {
+		text-decoration: underline;
+	}
 
 .wrapper {
 	width: 880px;
@@ -171,11 +175,47 @@ a {
 		border-right: 1px solid #d7d7d7;
 		background: url(../images/search.png) no-repeat center 25px;
 	}
-		.search-tags ul {
-			display: none;
-			position: absolute;
+
+	.tags {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 135px;
+		width: 670px;
+		height: 43px;
+		background: #2b2b2b;
+		padding: 20px 5px 5px;
+	}
+		.tags p {
+			float: left;
+			color: #959a9e;
+			margin: 4px 10px 0 5px;
+			font-size: 10px;
+			text-transform: uppercase;
 		}
 
+		.tags li {
+			float: left;
+		}
+
+		.tags ul {
+			margin-top: 4px;
+		}
+		.tags a span {
+			display: none;
+		}
+
+		.tags a {
+			color: #eaeaea;
+			float: left;
+			display: block;
+			font-size: 11px;
+			margin: 0 6px 2px 0;
+		}
+			.tags a:hover,
+			.tags a:focus {
+				text-decoration: underline;
+			}
 	.rss-feed {
 		float: right;
 		height: 68px;
@@ -209,19 +249,64 @@ a {
 	width: 880px;
 }
 
+.post {
+	padding: 20px;
+	margin: 20px 0;
+	position: relative;
+}
+
+	.post h2 {
+		margin: 0;
+	}
+
+	.post-intro {
+		margin-left: 116px;
+		/*border-left: 1px solid #ddd;*/
+		padding-left: 20px;
+	}
+
+	.post .tag_box {
+		margin: 0;
+	}
+		.post .tag_box a {
+			font-family: Consolas, "Liberation Mono", Courier, monospace;
+			color: #999;
+			margin: 0 4px 4px 0;
+			float: left;
+			font-size: 10px;
+		}
+
+	.post .meta {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+		.post .meta p {
+			margin: 0 0 5px;
+			float: left;
+			clear: both;
+			font-family: Consolas, "Liberation Mono", Courier, monospace;
+			font-size: 10px;
+			background: #e6e6e6;
+			color: #999;
+			padding: 5px;
+			line-height: 1;
+		}
+
 #footer {
 	width: 100%;
+	margin-top: 80px;
 	padding-top: 30px;
 	background: #fff;
 }
 	#footer h2 {
-		padding: 0 0 0 20px;
+		padding: 0 0 0 156px;
 		margin: 0 0 15px;
 		font-size: 16px;
 	}
 
 	#footer ul {
-		margin: 0 0 0 20px;
+		margin: 0 0 0 156px;
 		padding: 0;
 		clear: both;
 		overflow: hidden;
@@ -243,6 +328,7 @@ a {
 			#footer h3 a:focus {
 				text-decoration: underline;
 			}
+
 	#footer img {
 		float: left;
 		margin: 0 10px 10px 0;
@@ -259,7 +345,8 @@ a {
 
 	#footer li {
 		float: left;
-		width: 200px;
+		width: 170px;
+		margin-bottom: 10px;
 		overflow: hidden;
 	}
 
@@ -270,5 +357,5 @@ a {
 	}
 
 	#footer .copyright {
-		padding: 50px 0 20px 20px;
+		padding: 50px 0 20px 156px;
 	}

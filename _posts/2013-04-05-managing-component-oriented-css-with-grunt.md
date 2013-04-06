@@ -1,6 +1,6 @@
 ---
 layout: post
-tags : [grunt, javascript, discussion]
+tags : [grunt, javascript, css]
 title: "Managing component oriented CSS with Grunt"
 ---
 
