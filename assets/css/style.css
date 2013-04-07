@@ -2,11 +2,11 @@
 
 @font-face {
 		font-family: 'National';
-		src: url('../fonts/national-bold-webfont.eot');
-		src: url('../fonts/national-bold-webfont.eot?iefix') format('eot'),
-				url('../fonts/national-bold-webfont.woff') format('woff'),
-				url('../fonts/national-bold-webfont.ttf') format('truetype'),
-				url('../fonts/national-bold-webfont.svg#webfontXEh3gJ3S') format('svg');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.eot');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.woff') format('woff'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.svg#webfontXEh3gJ3S') format('svg');
 		font-weight: bold;
 		font-style: normal;
 		font-size-adjust: .46;
@@ -14,11 +14,11 @@
 
 @font-face {
 		font-family: 'National';
-		src: url('../fonts/national-bolditalic-webfont.eot');
-		src: url('../fonts/national-bolditalic-webfont.eot?iefix') format('eot'),
-				url('../fonts/national-bolditalic-webfont.woff') format('woff'),
-				url('../fonts/national-bolditalic-webfont.ttf') format('truetype'),
-				url('../fonts/national-bolditalic-webfont.svg#webfontYmR94w0D') format('svg');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.eot');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.woff') format('woff'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.svg#webfontYmR94w0D') format('svg');
 		font-weight: bold;
 		font-style: italic;
 		font-size-adjust: .46;
@@ -26,11 +26,11 @@
 
 @font-face {
 		font-family: 'National';
-		src: url('../fonts/national-book-webfont.eot');
-		src: url('../fonts/national-book-webfont.eot?iefix') format('eot'),
-				url('../fonts/national-book-webfont.woff') format('woff'),
-				url('../fonts/national-book-webfont.ttf') format('truetype'),
-				url('../fonts/national-book-webfont.svg#webfontKVq5rVfJ') format('svg');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.eot');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.woff') format('woff'),
+				url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.svg#webfontKVq5rVfJ') format('svg');
 		font-weight: normal;
 		font-style: normal;
 		font-size-adjust: .46;
@@ -38,11 +38,11 @@
 
 @font-face {
 		font-family: 'National';
-		src: url('../fonts/national-bookitalic-webfont.eot');
-		src: url('../fonts/national-bookitalic-webfont.eot?iefix') format('eot'),
-				url('../fonts/national-bookitalic-webfont.woff') format('woff'),
-				url('../fonts/national-bookitalic-webfont.ttf') format('truetype'),
-				url('../fonts/national-bookitalic-webfont.svg#webfontlguOA8Rs') format('svg');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.eot');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.woff') format('woff'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.svg#webfontlguOA8Rs') format('svg');
 		font-weight: normal;
 		font-style: italic;
 		font-size-adjust: .46;
@@ -50,11 +50,11 @@
 
 @font-face {
 		font-family: 'NationalExtrabold';
-		src: url('../fonts/national-extrabold-webfont.eot');
-		src: url('../fonts/national-extrabold-webfont.eot?iefix') format('eot'),
-				url('../fonts/national-extrabold-webfont.woff') format('woff'),
-				url('../fonts/national-extrabold-webfont.ttf') format('truetype'),
-				url('../fonts/national-extrabold-webfont.svg#webfontidGqM69c') format('svg');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.eot');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.woff') format('woff'),
+				url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.svg#webfontidGqM69c') format('svg');
 		font-weight: bold;
 		font-style: normal;
 		font-size-adjust: .46;
@@ -62,11 +62,11 @@
 
 @font-face {
 		font-family: 'NationalExtrabold';
-		src: url('../fonts/national-extrabolditalic-webfont.eot');
-		src: url('../fonts/national-extrabolditalic-webfont.eot?iefix') format('eot'),
-				url('../fonts/national-extrabolditalic-webfont.woff') format('woff'),
-				url('../fonts/national-extrabolditalic-webfont.ttf') format('truetype'),
-				url('../fonts/national-extrabolditalic-webfont.svg#webfontQZOAsODx') format('svg');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.eot');
+		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.woff') format('woff'),
+				url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.svg#webfontQZOAsODx') format('svg');
 		font-weight: bold;
 		font-style: italic;
 		font-size-adjust: .46;
@@ -77,13 +77,13 @@ html {
 }
 
 body {
-	font-size: 62.5%;
-	font-family: National, "Helvetica Neue", Arial, sans-serif;
-	color: #2b2b2b;
-	line-height: 1.8em;
-	font-size-adjust: 0.46;
-	padding-top: 80px;
 	background: #f0f0f1;
+	color: #2b2b2b;
+	font-family: National, "Helvetica Neue", Arial, sans-serif;
+	font-size-adjust: 0.46;
+	font-size: 62.5%;
+	line-height: 1.8em;
+	padding: 0;
 }
 
 h1, h2, h3 {
@@ -96,19 +96,28 @@ h1, h2, h3 {
 	letter-spacing: -0.055;
 }
 
+h1 {
+	margin-left: -1px;
+}
+
 h3 {
 	font-size: 20px;
 	line-height: 24px;
 }
 
 p, li, td {
-	font-size: 14px;
-	line-height: 18px;
+	font-size: 16px;
+	line-height: 25px;
 	color: #2B2B2B;
 }
 
 code {
 	font-family: Console, monospace;
+}
+
+hr {
+	border: none;
+	border-top: 1px dashed #aaa;
 }
 
 a {
@@ -122,6 +131,7 @@ a {
 	}
 
 .wrapper {
+	margin: 0 auto;
 	width: 880px;
 	position: relative;
 }
@@ -152,7 +162,7 @@ a {
 	border-bottom: 2px solid rgba(43, 43, 43, 0.2);
 }
 	.logo {
-		padding: 14px 20px 0 20px;
+		padding: 14px 20px 0 0;
 		border-right: 1px solid #d7d7d7;
 		height: 54px;
 		display: block;
@@ -240,6 +250,10 @@ a {
 			opacity: 0.6;
 		}
 
+.content {
+	padding-top: 68px;
+}
+
 #container {
 	width: 480px;
 	margin: 0 auto;
@@ -282,31 +296,54 @@ a {
 		left: 20px;
 	}
 		.post .meta p {
-			margin: 0 0 5px;
-			float: left;
+			background: #ddd;
 			clear: both;
+			color: #666;
+			float: left;
 			font-family: Consolas, "Liberation Mono", Courier, monospace;
 			font-size: 10px;
-			background: #e6e6e6;
-			color: #999;
-			padding: 5px;
 			line-height: 1;
+			margin: 0 0 5px;
+			padding: 5px;
 		}
 
+	.pagination {
+		margin-top: 15px;
+	}
+
+	.pagination ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.pagination li {
+		float: left;
+	}
+
+	.pagination a {
+		padding: 0 5px;
+	}
+
+	.pagination li:first-child a {
+		padding-left: 0;
+	}
+
 #footer {
+	border-top: 2px solid rgba(43, 43, 43, 0.2);
 	width: 100%;
 	margin-top: 80px;
 	padding-top: 30px;
 	background: #fff;
 }
 	#footer h2 {
-		padding: 0 0 0 156px;
+		padding: 0 0 0;
 		margin: 0 0 15px;
 		font-size: 16px;
 	}
 
 	#footer ul {
-		margin: 0 0 0 156px;
+		margin: 0 0 0;
 		padding: 0;
 		clear: both;
 		overflow: hidden;
@@ -357,5 +394,5 @@ a {
 	}
 
 	#footer .copyright {
-		padding: 50px 0 20px 156px;
+		padding: 50px 0 20px;
 	}

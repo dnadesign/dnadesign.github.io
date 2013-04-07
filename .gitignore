@@ -11,3 +11,6 @@ Thumbs.db
 
 # don't make fonts public
 assets/fonts
+/.buildpath
+/.project
+/.settings
