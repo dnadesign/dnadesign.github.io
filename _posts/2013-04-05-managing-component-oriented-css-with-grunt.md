@@ -74,38 +74,39 @@ We ended up with 26 components, each using code in multiple breakpoints.
 
 Now this gets tricky to manage. Rather than styling pages you're styling components of pages… across breakpoints.
 
-When you start debugging a component or tweaking a component within between breakpoints you're opening multiple files (we had one for each breakpoint) and scrolling around trying to find the place in that file which dealt with the component we were working on.
+When you start debugging a component or tweaking a component between breakpoints, you end up opening multiple files (we had one for each breakpoint) and scrolling around trying to find the place in that file which dealt with the component we were working on.
 
-So we managed the complexity of this by creating stylesheets for each component and at breakpoint.
+So we managed this complexity by creating stylesheets for each component, at each breakpoint.
 
-A-like so:
-* a-z.base.less
-* a-z.small.less
-* a-z.medium.less
-* a-z.large.less
-* a-z.xlarge.less
-* banner.base.less
-* banner.small.less
-* banner.medium.less
-* banner.large.less
-* banner.xlarge.less
+* a-z/a-z.base.less
+* a-z/a-z.small.less
+* a-z/a-z.medium.less
+* a-z/a-z.large.less
+* a-z/a-z.xlarge.less
+* banner/banner.base.less
+* banner/banner.small.less
+* banner/banner.medium.less
+* banner/banner.large.less
+* banner/banner.xlarge.less
 * etc
 
-This approach meant we could easily work on a component between breakpoints. We were still opening multiple files, however the files were substantially shorter, most under 100 lines. All of the css is in one place. The next file up is only going to have the changes to this file. The files become easy to compare to see what is being changed between breakpoints. 
+This approach meant we could easily work on a component between breakpoints. We were still opening multiple files, but the files were substantially shorter, most under 100 lines. It became easy to compare and see what was changing between breakpoints. 
 
-For easy of use the example above shows a file for every breakpoint, whereas we didn't create files for breakpoints with no changes.
+For ease of use the example above shows a file for every breakpoint, whereas we didn't create files for breakpoints with no changes.
 
 Having separate stylesheets for each component at each breakpoint is not ideal in production. In the project we were working on (wellington.govt.nz) the browser could end up downloading almost 100 stylesheets.
 
 ## Step in grunt.
 
-Grunt is a node module(?) which handles tasks. Tasks like concatenation, compiling less, uglify and even watch…
+Grunt is a node module(?) which handles tasks. Tasks like concatenation, compiling less or sass, minify, uglify and even watch…
 
 ### Step 1
 
+The watch command in grunt is very useful. You tell grunt which files to watch, and what to do when they change.
+
 We made grunt watch every \*.less file in our template folder. If any of the files changed, Grunt would:
-1. Compiled and minify every \*.base.less file into base.css
-1. Compiled and minify every \*.small.less into small.css
+1. Compile and minify every \*.base.less file into base.css
+1. Compile and minify every \*.small.less into small.css
 1. etc
 
 We now had stylesheets for each breakpoint, base, small, medium, large and xlarge.
@@ -141,15 +142,15 @@ In the grunt config file this looks something like:
 	}
 
 This process creates:
-* base.min.css
-* small.min.css
+* build/base.min.css
+* build/small.min.css
 * etc
 
-However we didn't want multiple media queries in each file and less doesn't handle media queries so well.
+However we didn't want to have to update multiple places if a breakpoint changed, we didn't want multiple media queries in each compiled file, and less doesn't handle media queries so well.
 
 ### Step 2:
 
-We put all our media queries in separate files and only concatenated them onto the file once the initial compiling and minifying was done.
+We put all our media queries in separate files and only concatenated them onto the compiled file once the initial compiling and minifying was done.
 
 In the grunt config file this looked something like:
 
@@ -192,17 +193,21 @@ In the grunt config file this looked something like:
 	}
 
 This process creates:
-* base.min.css
-* small.min.css
+* dist/base.min.css
+* dist/small.min.css
 * etc
 
 This time with one media query at the top, rather than sprinkled throughout.
 
-However we didn't want to serve multiple stylesheets, one for each break point.
+Now we have:
+* A 'build' folder, with the compiled CSS into a file for each breakpoint, *without* media queries. 
+* A 'dist' folder, with the compiled CSS into a file for each breakpoint, *with* media queries. 
+
+However we didn't want to serve the browser multiple stylesheets.
 
 ### Step 3
 
-We concatenated the media queries around the compiling CSS together into one production css file.
+We concatenated the CSS file in the 'dist' folder together into one production css file.
 
 We add this to our grunt file inside the concat task:
 
