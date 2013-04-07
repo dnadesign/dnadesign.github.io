@@ -4,21 +4,17 @@ tags : [grunt, javascript, css, responsive]
 title: "Managing component oriented CSS with Grunt"
 ---
 
-There’s so much talk about new CSS libraries, grids, frameworks etc. It’s not helping. In fact it’s sending us down a dead end street. They’re great for prototypes, not for prime time, none of them allow for the inherent flexibility of responsive. 
+Now that responsive is on the scene, how do you manage a large amount of css across breakpoints?
 
-I was an absolute convert to using utility styles, ever since seeing a Nicole Sullivan talk I’ve loved the idea of OOCSS. I spent two years working on my own set of utility styles which project by project got better and better, faster and faster. I’ve thrown that work away. 
+We were working on wellington.govt.nz and initially we set out with a stylesheet per breakpoint. This approach worked fine for the first few sprints. However once the main developer left and the CSS file was beginning to get larger, it quickly became evident this approach was not serving us.
 
-It doesn’t work for responsive.
+So utility styles don't work. Code reuse becomes a pain. They might look the same at this breakpoint but what about the next? We could create breakpoint utility classes: small-grid1, medium-grid1. That gets ridiculous fast. We want to be able to quickly find and change a component across breakpoints, without needing to check if we've screwed up anything else in the project or testing would become diabolical.
 
-While I used to have a .grid_4 class, when I’m using responsive I have no idea whether that item will still be 4 columns wide at a different breakpoint. Or f_left (float:left), will it be floated at a large screen or a small screen? Assuming both isn’t going to work. The only reason this approach may be working for you currently, is that designers have yet to really push how different each breakpoint can be.
+So what's the answer? Component CSS. It's still object orientated, just in a different way. We need css classes that can react across breakpoints.
 
-So utility doesn't work. Code reuse becomes a pain. They might look the same at this breakpoint but what about the next? We could create breakpoint utility classes: small-grid1, medium-grid1. That gets ridiculous fast. We want to be able to quickly tweak a component across breakpoints, without needing to check if we've screwed up anything else in the project or testing would become diabolical.
+Component CSS means you don't re-use styles. You make CSS that corresponds directly to HTML. They're coupled. While coupled is a dirty word, we don't see any other option.
 
-So what's the answer? Component CSS. It's still object orientated, just in a different way. We need css classes that can react across breakpoints. 
-
-You don't re-use styles. You make CSS that corresponds directly to HTML. They're coupled. While coupled is a dirty word, we don't see any other option.
-
-A component at one breakpoint ended up looking something like:
+A component at one breakpoint might look like:
 
 	/*============================================================
 	A-Z.
@@ -74,9 +70,9 @@ We ended up with 26 components, each using code in multiple breakpoints.
 
 Now this gets tricky to manage. Rather than styling pages you're styling components of pages… across breakpoints.
 
-When you start debugging a component or tweaking a component between breakpoints, you end up opening multiple files (we had one for each breakpoint) and scrolling around trying to find the place in that file which dealt with the component we were working on.
+When you start debugging a component or tweaking a component between breakpoints, you end up opening multiple files (we had one for each breakpoint) and scrolling around trying to find the place in that file which dealt with the component we were working on. Not only did we need CSS classes that were independent, we needed a file structure that imitated this.
 
-So we managed this complexity by creating stylesheets for each component, at each breakpoint.
+So we created stylesheets for each component, at each breakpoint.
 
 * a-z/a-z.base.less
 * a-z/a-z.small.less
@@ -94,11 +90,11 @@ This approach meant we could easily work on a component between breakpoints. We 
 
 For ease of use the example above shows a file for every breakpoint, whereas we didn't create files for breakpoints with no changes.
 
-Having separate stylesheets for each component at each breakpoint is not ideal in production. In the project we were working on (wellington.govt.nz) the browser could end up downloading almost 100 stylesheets.
+Having separate stylesheets for each component at each breakpoint is not ideal in production. On the project we were working on the browser could end up downloading almost 100 stylesheets.
 
 ## Step in grunt.
 
-Grunt is a node module(?) which handles tasks. Tasks like concatenation, compiling less or sass, minify, uglify and even watch…
+[Grunt](http://gruntjs.com) is a node module(?) which handles tasks. Tasks like concatenation, compiling less or sass, minify, uglify and even watch…
 
 ### Step 1
 
@@ -111,7 +107,7 @@ We made grunt watch every \*.less file in our template folder. If any of the fil
 
 We now had stylesheets for each breakpoint, base, small, medium, large and xlarge.
 
-In the grunt config file this looks something like:
+In the grunt config file this looked something like:
 
 	less: {
 		development: {
@@ -143,10 +139,15 @@ In the grunt config file this looks something like:
 
 This process creates:
 * build/base.min.css
+* build/base.retina.min.css
 * build/small.min.css
+* build/small.retina.min.css
 * etc
 
-However we didn't want to have to update multiple places if a breakpoint changed, we didn't want multiple media queries in each compiled file, and less doesn't handle media queries so well.
+However there were 3 problems.
+* We didn't want to have to update multiple places if a breakpoint changed
+* We didn't want multiple media queries in each compiled file
+* Less doesn't handle media queries so well
 
 ### Step 2:
 
@@ -194,7 +195,9 @@ In the grunt config file this looked something like:
 
 This process creates:
 * dist/base.min.css
+* dist/base.retina.min.css
 * dist/small.min.css
+* dist/small.retina.min.css
 * etc
 
 This time with one media query at the top, rather than sprinkled throughout.
@@ -203,11 +206,11 @@ Now we have:
 * A 'build' folder, with the compiled CSS into a file for each breakpoint, *without* media queries. 
 * A 'dist' folder, with the compiled CSS into a file for each breakpoint, *with* media queries. 
 
-However we didn't want to serve the browser multiple stylesheets.
+However in production we didn't want to serve the browser multiple stylesheets. 
 
 ### Step 3
 
-We concatenated the CSS file in the 'dist' folder together into one production css file.
+We concatenated the CSS files in the 'dist' folder together into one production css file.
 
 We add this to our grunt file inside the concat task:
 
@@ -234,4 +237,8 @@ We add this to our grunt file inside the concat task:
 This means we can use the breakpoint css sheets in development, so we can easily see what's going on. We can then use one production css file in production.
 
 It means we can easily debug components like menus without scrolling through the other 500 lines of CSS that has nothing to do with what we're working on.
+
+This approach doesn't have to with less, standard CSS or Sass would work just as well.
+
+Now we can work on a single component and as soon as the file is saved, the less is compiled, the breakpoint CSS file is updated and single production CSS is updated.
 
