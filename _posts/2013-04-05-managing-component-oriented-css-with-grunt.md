@@ -242,3 +242,215 @@ This approach doesn't have to with less, standard CSS or Sass would work just as
 
 Now we can work on a single component and as soon as the file is saved, the less is compiled, the breakpoint CSS file is updated and single production CSS is updated.
 
+Our final grunt file looks something like:
+
+	module.exports = function(grunt) {
+		grunt.initConfig({
+			pkg: grunt.file.readJSON('package.json'),
+			meta: {
+				banner: '/*! DNA Designed Communications Limited | Copyright 2012 */'
+			},
+			less: {
+				development: {
+					options: {
+						paths: ['less'],
+						compress: true
+					},
+					files: {
+						'css/build/base.min.css': [
+							'less/reset.less',
+							'less/base.less',
+							'less/utility.less',
+							'less/components/**/*.base.less'
+						],
+						'css/build/base.retina.min.css': [
+							'less/components/**/*.base.retina.less'
+						],
+						'css/build/small.min.css': [
+							'less/components/**/*.small.less'
+						],
+						'css/build/small.retina.min.css': [
+							'less/components/**/*.small.retina.less'
+						],
+						'css/build/medium.min.css': [
+							'less/components/**/*.medium.less'
+						],
+						'css/build/medium.retina.min.css': [
+							'less/components/**/*.medium.retina.less'
+						],
+						'css/build/large.min.css': [
+							'less/components/**/*.large.less'
+						],
+						'css/build/large.retina.min.css': [
+							'less/components/**/*.large.retina.less'
+						],
+						'css/build/xlarge.min.css': [
+							'less/components/**/*.xlarge.less'
+						],
+						'css/build/xlarge.retina.min.css': [
+							'less/components/**/*.xlarge.retina.less'
+						],
+						'css/build/xxlarge.min.css': [
+							'less/components/**/*.xxlarge.less'
+						],
+						'css/build/xxlarge.retina.min.css': [
+							'less/components/**/*.xxlarge.retina.less'
+						],
+						'css/dist/print.css': [
+							'less/print.less'
+						],
+						'prototypes/css/style.css': [
+							'prototypes/less/*.less'
+						]
+					}
+				},
+			},
+			concat: {
+				base: {
+					src: [
+						'<banner>',
+						'css/helpers/fonts.css',
+						'css/build/base.min.css'
+					],
+					dest: 'css/dist/base.min.css'
+				},
+				base_retina: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.base.retina.css',
+						'css/build/base.retina.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/base.retina.min.css'
+				},
+				small: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.small.css',
+						'css/build/small.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/small.min.css',
+					seperator: '\n'
+				},
+				small_retina: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.small.retina.css',
+						'css/build/small.retina.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/small.retina.min.css'
+				},
+				medium: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.medium.css',
+						'css/build/medium.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/medium.min.css',
+					seperator: '\n'
+				},
+				medium_retina: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.medium.retina.css',
+						'css/build/medium.retina.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/medium.retina.min.css'
+				},
+				large: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.large.css',
+						'css/build/large.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/large.min.css',
+					seperator: '\n'
+				},
+				large_retina: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.large.retina.css',
+						'css/build/large.retina.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/large.retina.min.css'
+				},
+				xlarge: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.xlarge.css',
+						'css/build/xlarge.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/xlarge.min.css',
+					seperator: '\n'
+				},
+				xlarge_retina: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.xlarge.retina.css',
+						'css/build/xlarge.retina.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/xlarge.retina.min.css'
+				},
+				xxlarge: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.xxlarge.css',
+						'css/build/xxlarge.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/xxlarge.min.css',
+					seperator: '\n'
+				},
+				xxlarge_retina: {
+					src: [
+						'<banner>',
+						'css/helpers/queries.xxlarge.retina.css',
+						'css/build/xxlarge.retina.min.css',
+						'css/helpers/queries.close.css'
+					],
+					dest: 'css/dist/xxlarge.retina.min.css'
+				},
+				production: {
+					src: [
+						'<banner>',
+						'css/dist/base.min.css',
+						'css/dist/base.retina.min.css',
+						'css/dist/small.min.css',
+						'css/dist/small.retina.min.css',
+						'css/dist/medium.min.css',
+						'css/dist/medium.retina.min.css',
+						'css/dist/large.min.css',
+						'css/dist/large.retina.min.css',
+						'css/dist/xlarge.min.css',
+						'css/dist/xlarge.retina.min.css',
+						'css/dist/xxlarge.min.css',
+						'css/dist/xxlarge.retina.min.css',
+						'css/dist/print.css'
+					],
+					dest: 'css/dist/production.min.css',
+					seperator: '\n'
+				}
+			},
+			watch: {
+				files: ['less/*.less', 'less/components/**/*.less', 'css/helpers/*.css'],
+				tasks: ['less', 'concat']
+			}
+		});	
+
+		grunt.loadNpmTasks('grunt-css');
+		grunt.loadNpmTasks('grunt-contrib-less');
+		grunt.loadNpmTasks('grunt-contrib-concat');
+		grunt.loadNpmTasks('grunt-contrib-watch');
+
+		grunt.registerTask('default', ['less', 'concat', 'watch']);
+	};
+
+Any questions?
