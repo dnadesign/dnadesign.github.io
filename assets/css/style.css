@@ -1,52 +1,5 @@
 @import "normalize.css";
 
-@font-face {
-		font-family: 'National';
-		src: url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.eot');
-		src: url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.eot?iefix') format('eot'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.woff') format('woff'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.ttf') format('truetype'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bold-webfont.svg#webfontXEh3gJ3S') format('svg');
-		font-weight: bold;
-		font-style: normal;
-		font-size-adjust: .46;
-}
-
-@font-face {
-		font-family: 'National';
-		src: url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.eot');
-		src: url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.eot?iefix') format('eot'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.woff') format('woff'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.ttf') format('truetype'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bolditalic-webfont.svg#webfontYmR94w0D') format('svg');
-		font-weight: bold;
-		font-style: italic;
-		font-size-adjust: .46;
-}
-
-@font-face {
-		font-family: 'National';
-		src: url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.eot');
-		src: url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.eot?iefix') format('eot'),
-				url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.woff') format('woff'),
-				url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.ttf') format('truetype'),
-				url('http://dna.co.nz/themes/Base/fonts/national-book-webfont.svg#webfontKVq5rVfJ') format('svg');
-		font-weight: normal;
-		font-style: normal;
-		font-size-adjust: .46;
-}
-
-@font-face {
-		font-family: 'National';
-		src: url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.eot');
-		src: url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.eot?iefix') format('eot'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.woff') format('woff'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.ttf') format('truetype'),
-				url('http://dna.co.nz/themes/Base/fonts/national-bookitalic-webfont.svg#webfontlguOA8Rs') format('svg');
-		font-weight: normal;
-		font-style: italic;
-		font-size-adjust: .46;
-}
 
 @font-face {
 		font-family: 'NationalExtrabold';
@@ -73,16 +26,14 @@
 }
 
 html {
-	background: #fff;
+	background: #f6f5f5 url(/assets/images/texture.png) repeat;
 }
 
 body {
-	background: #f0f0f1;
-	color: #2b2b2b;
-	font-family: National, "Helvetica Neue", Arial, sans-serif;
-	font-size-adjust: 0.46;
-	font-size: 62.5%;
-	line-height: 1.8em;
+	color: rgb(64, 64, 64);
+	font-family: Inconsolata, Menlo, Courier, monospace;
+	font-size: 14px;
+	line-height: 24px;
 	padding: 0;
 }
 
@@ -92,7 +43,9 @@ h1, h2, h3 {
 	font-weight: bold;
 	font-size: 40px;
 	text-transform: uppercase;
+	margin-top: 0;
 	line-height: 1;
+	font-size-adjust: 0.46;
 	letter-spacing: -0.055;
 }
 
@@ -100,6 +53,10 @@ h1 {
 	margin-left: -1px;
 }
 
+h2 {
+	margin-bottom: 15px;
+	text-shadow: 0 1px 1px #fff;
+}
 h3 {
 	font-size: 20px;
 	line-height: 24px;
@@ -111,8 +68,6 @@ h4 {
 }
 
 p, li, td {
-	font-size: 16px;
-	line-height: 25px;
 	color: #2B2B2B;
 }
 
@@ -153,276 +108,205 @@ hr {
 a {
 	outline: none;
 	text-decoration: none;
+	padding: 2px;
 	color: #E51A86;
+
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 	a:hover,
 	a:focus {
-		text-decoration: underline;
-	}
-
-.wrapper {
-	margin: 0 auto;
-	width: 880px;
-	position: relative;
-}
-
-.inline,
-.posts {
-	margin: 0 auto;
-	padding: 0;
-}
-	.inline li {
-		display: inline;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-	}
-
-	.posts li {
-		list-style: none;
+		text-decoration: none;
+		background: #E51A86;
+		color: #fff;
 	}
 
 #header {
+	width: 220px;
 	position: fixed;
-	z-index: 1;
-	top: 0;
-	width: 100%;
-	height: 68px;
-	background: #fff;
-	border-bottom: 2px solid rgba(43, 43, 43, 0.2);
+	padding: 40px 60px;
 }
-	.logo {
-		padding: 14px 20px 0 0;
-		border-right: 1px solid #d7d7d7;
-		height: 54px;
-		display: block;
-		float: left;
+	#header p {
+		font-size: 12px;
+		line-height: 16px;
+		color: #aaa;
 	}
 
-	.tagline {
-		width: 430px;
-		padding: 21px 0 0 20px;
+	#header a {
+		color: #aaa;
+		text-decoration: underline;
+	}
+		#header a:hover,
+		#header a:focus {
+			text-decoration: none;
+			color: #fff;
+		}
+
+	#header ul {
 		margin: 0;
-		float: left;
-		font: italic 14px/16px National, arial, sans-serif;
+		padding: 0;
 	}
 
-	.search-tags {
-		float: right;
-		height: 68px;
-		cursor: pointer;
-		width: 64px;
-		border-right: 1px solid #d7d7d7;
-		background: url(../images/search.png) no-repeat center 25px;
+	#header li {
+		list-style: none;
 	}
 
-	.tags {
+.logo {
+	display: block;
+	margin-bottom: 20px;
+}
+	.logo:hover,
+	.logo:focus {
+		background: transparent;
+		opacity: 0.8;
+	}
+
+#content {
+	padding: 48px 0 0 340px;
+	width: 500px;
+}
+
+.posts {
+	margin: 0;
+	padding: 0;
+}
+
+	.posts .post {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+.inline {
+	padding: 0;
+}
+	.inline li {
+		list-style: none;
+		margin: 0;
+		display: inline;
+	}
+
+.tags li {
+	text-transform: lowercase;
+}
+	.tags li span {
 		display: none;
-		position: absolute;
-		top: 0;
-		left: 135px;
-		width: 670px;
-		height: 43px;
-		background: #2b2b2b;
-		padding: 20px 5px 5px;
 	}
-		.tags p {
-			float: left;
-			color: #959a9e;
-			margin: 4px 10px 0 5px;
-			font-size: 10px;
-			text-transform: uppercase;
-		}
 
-		.tags li {
-			float: left;
-		}
+.post {}
 
-		.tags ul {
-			margin-top: 4px;
-		}
-		.tags a span {
-			display: none;
-		}
-
-		.tags a {
-			color: #eaeaea;
-			float: left;
-			display: block;
-			font-size: 11px;
-			margin: 0 6px 2px 0;
-		}
-			.tags a:hover,
-			.tags a:focus {
-				text-decoration: underline;
-			}
-	.rss-feed {
-		float: right;
-		height: 68px;
-		text-indent: -9000px;
-		overflow: hidden;
-		outline: none;
-		border: 1px solid #d7d7d7;
-		border-width: 0 1px;
-		width: 64px;
-		background: url(../images/feed.png) no-repeat center 25px;
-
-		-webkit-transition: opacity 1s ease;
-		-moz-transition: opacity 1s ease;
-		-ms-transition: opacity 1s ease;
-		-o-transition: opacity 1s ease;
-		transition: opacity 1s ease;
+.post-title {
+	display: block;
+}
+	.post-title a {
+		display: inline;
+		margin: 0 0 0 -2px;
 	}
-		.search-tags:focus,
-		.search-tags:hover,
-		.rss-feed:hover,
-		.rss-feed:focus {
-			opacity: 0.6;
+
+.post-intro {
+	position: relative;
+}
+	.post-intro p {
+		color: #aaa;
+		cursor: pointer;
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		-ms-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+	}
+
+		.post-intro p:hover,
+		.post-intro p:focus {
+			color: rgb(64, 64, 64);
 		}
 
-.content {
-	padding-top: 68px;
+.post-spinner {
+	display: none;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	font-size: 45px;
+	color: #ccc;
+	margin: 0 0 0 -20px;
 }
 
-#container {
-	width: 480px;
-	margin: 0 auto;
-}
-
-#wrapper {
-	width: 880px;
-}
-
-.post {
-	padding: 20px;
-	margin: 20px 0;
+.post-text {
 	position: relative;
 }
 
-	.post h2 {
-		margin: 0;
-	}
-
-	.post-intro {
-		margin-left: 116px;
-		/*border-left: 1px solid #ddd;*/
-		padding-left: 20px;
-	}
-
-	.post .tag_box {
-		margin: 0;
-	}
-		.post .tag_box a {
-			font-family: Consolas, "Liberation Mono", Courier, monospace;
-			color: #999;
-			margin: 0 4px 4px 0;
-			float: left;
-			font-size: 10px;
-		}
-
-	.post .meta {
-		position: absolute;
-		top: 20px;
-		left: 20px;
-	}
-		.post .meta p {
-			background: #ddd;
-			clear: both;
-			color: #666;
-			float: left;
-			font-family: Consolas, "Liberation Mono", Courier, monospace;
-			font-size: 10px;
-			line-height: 1;
-			margin: 0 0 5px;
-			padding: 5px;
-		}
-
-	.pagination {
-		margin-top: 15px;
-	}
-
-	.pagination ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.pagination li {
-		float: left;
-	}
-
-	.pagination a {
-		padding: 0 5px;
-	}
-
-	.pagination li:first-child a {
-		padding-left: 0;
-	}
-
-#footer {
-	border-top: 2px solid rgba(43, 43, 43, 0.2);
-	width: 100%;
-	margin-top: 80px;
-	padding-top: 30px;
-	background: #fff;
+.post-footer {
+	margin: 16px 0 48px;
+	position: relative;
+	border: 1px dashed #ccc;
 }
-	#footer h2 {
-		padding: 0 0 0;
-		margin: 0 0 15px;
-		font-size: 16px;
+
+	.post-footer:before,
+	.post-footer:after,
+	.post-footer p:before,
+	.post-footer p:after {
+		content: '+';
+		display: block;
+		color: #ccc;
+		font-size: 10px;
+		position: absolute;
+		top: -12px;
+		left: -3px;
 	}
 
-	#footer ul {
-		margin: 0 0 0;
-		padding: 0;
-		clear: both;
-		overflow: hidden;
-		list-style: none;
+	.post-footer:after,
+	.post-footer p:after {
+		left: 100%;
+		margin-left: -2px;
 	}
 
-	#footer h3 {
-		font-size: 12px;
-		text-transform: none;
-		padding: 0;
-		margin: 0 0 2px 0;
-		line-height: 15px;
-	}
-		#footer h3 a {
-			display: block;
-			font-weight: normal;
-		}
-			#footer h3 a:hover,
-			#footer h3 a:focus {
-				text-decoration: underline;
-			}
-
-	#footer img {
-		float: left;
-		margin: 0 10px 10px 0;
-		border: 1px solid #ddd;
-		border-radius: 2px;
-		padding: 1px;
+	.post-footer p:before,
+	.post-footer p:after {
+		top: 100%;
+		margin-top: -7px;
 	}
 
-	#footer small {
-		color: #999;
-		font-size: 11px;
-		font-weight: normal;
-	}
-
-	#footer li {
-		float: left;
-		width: 170px;
-		margin-bottom: 10px;
-		overflow: hidden;
-	}
-
-	#footer p {
+	.post-footer p {
 		margin: 0;
-		padding: 0;
+		padding: 7px;
+		color: #aaa;
+
 		font-size: 12px;
+		line-height: 16px;
+		color: #aaa;
 	}
 
-	#footer .copyright {
-		padding: 50px 0 20px;
+	.post-footer a {
+		color: #aaa;
 	}
+		.post-footer a:hover,
+		.post-footer a:focus {
+			background: none;
+			color: rgb(64, 64, 64);
+		}
+
+.content-footer {
+	border-top: 1px dashed #ccc;
+	margin-top: 96px;
+	padding: 15px 0 96px;
+	color: #aaa;
+}
+	.content-footer p {
+		color: #aaa;
+		font-size: 12px;
+		line-height: 16px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.content-footer a {
+		color: #aaa;
+	}
+		.content-footer a:hover,
+		.content-footer a:focus {
+			color: #000;
+			background: none;
+		}
