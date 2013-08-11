@@ -45,10 +45,10 @@ If it's responsive, then the height could change with an item wrapping onto mult
 
 So when I came to build http://wellington.govt.nz/services/community-and-culture/community-directory/community-groups I had both (the list under the search box).
 
-The answer is javascript. Javascript that 
+The answer is javascript. Javascript that:
 1. Figures out the number of columns based on their width. 
-2. Decides where to break based on the number of items and the number of columns
-3. Updates the negative margin when either the height or number of columns changes.
+1. Decides where to break based on the number of items and the number of columns
+1. Updates the negative margin when either the height or number of columns changes.
 
 This means you can keep all of your logic in your HTML/CSS. You set your media queries, number of columns in your CSS. You set the content in your HTML or CMS. You tell the following plugin to watch that list and you're away.
 

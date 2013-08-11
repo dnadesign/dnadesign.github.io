@@ -2,6 +2,7 @@
 layout: post
 tags : [grunt, javascript, css, responsive]
 title: "Managing component oriented CSS with Grunt"
+author: "John Milmine"
 ---
 
 Now that responsive is on the scene, how do you manage a large amount of css across breakpoints?

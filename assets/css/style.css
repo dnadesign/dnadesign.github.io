@@ -105,10 +105,40 @@ h3 {
 	line-height: 24px;
 }
 
+h4 {
+	font-size: 18px;
+	line-height: 22px;
+}
+
 p, li, td {
 	font-size: 16px;
 	line-height: 25px;
 	color: #2B2B2B;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+ul, ol {
+	margin: 0 0 1em;
+	padding-left: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	padding-left: 1em;
+	margin-bottom: .2em;
+}
+
+li {
+
+}
+
+li p {
+	margin: 0 0 .2em;
 }
 
 code {
