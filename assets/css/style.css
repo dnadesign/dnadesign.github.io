@@ -132,10 +132,12 @@ hr {
 }
 
 a {
-	outline: none;
-	text-decoration: none;
-	padding: 2px;
 	color: #E51A86;
+	margin-left: -2px;
+	margin-right: -2px;
+	outline: none;
+	padding: 2px;
+	text-decoration: none;
 
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
