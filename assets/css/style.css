@@ -85,15 +85,26 @@ ul ol,
 ol ol,
 ol ul {
 	padding-left: 1em;
-	margin-bottom: .2em;
 }
 
 li {
 
 }
 
-li p {
+.post li p {
 	margin: 0 0 .2em;
+}
+
+.post ul li {
+	list-style: disc;
+}
+
+.post li ul li {
+	list-style: circle;
+}
+
+.post li li ul li {
+	list-style: square;
 }
 
 code {

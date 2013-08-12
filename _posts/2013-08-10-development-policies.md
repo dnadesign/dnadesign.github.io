@@ -14,62 +14,9 @@ Now we've turned to a combination of BEM and atomic design. We believe this will
 
 ### Setup folder structure
 
-* build
+<p><a href="/assets/files/project_sample.zip">Download structure here</a></p>
 
-	* components
-
-		* component_1 
-
-			* css
-
-					* component_1.xsmall.less
-					* component_1.small.less
-					* etc
-			* js
-
-					* vendor
-					* component_1.js
-		* component_2
-
-			* css
-
-					* component_2.xsmall.less
-					* component_2.small.less 
-					* etc
-			* js
-
-					* vendor
-					* component_2.js
-	* elements
-			
-		* element_1
-
-			* element_1.xsmall.less
-			* element_1.small.less
-			* etc
-		* element_2
-
-			* element_2.xsmall.less
-			* element_2.small.less
-			* etc
-
-	* global
-
-		* css
-
-			* helpers
-			* vendor
-		* js
-
-			* vendor
-			
-* css
-
-	* build
-	* dist
-* js
-
-	* dist
+<p><a href="/assets/files/grunt.js">Grunt file for file structure</a></p>
 
 ### Step 2
 
@@ -173,7 +120,11 @@ Mixins add overall bloat, consider carefully when you use them. In most cases it
 
 If using a pre-processor don't nest more the 3 times if possible. This simplifies resulting css rules and makes specificity easier.
 
-13) Style guidelines
+13) Put javascript with css
+
+Global javasctript should go in build/global/js, this includes things like jQuery. Whereas js for carousel's should go in the carousel component folder.
+
+14) Style guidelines
 
 * { on same line as selector
 * space between rule and brace (.asd { NOT .asd{)
