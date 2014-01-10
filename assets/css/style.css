@@ -3,11 +3,11 @@
 
 @font-face {
 		font-family: 'NationalExtrabold';
-		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.eot');
-		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.eot?iefix') format('eot'),
-				url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.woff') format('woff'),
-				url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.ttf') format('truetype'),
-				url('http://dna.co.nz/themes/Base/fonts/national-extrabold-webfont.svg#webfontidGqM69c') format('svg');
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.eot');
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.woff') format('woff'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.svg#webfontidGqM69c') format('svg');
 		font-weight: bold;
 		font-style: normal;
 		font-size-adjust: .46;
@@ -15,11 +15,11 @@
 
 @font-face {
 		font-family: 'NationalExtrabold';
-		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.eot');
-		src: url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.eot?iefix') format('eot'),
-				url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.woff') format('woff'),
-				url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.ttf') format('truetype'),
-				url('http://dna.co.nz/themes/Base/fonts/national-extrabolditalic-webfont.svg#webfontQZOAsODx') format('svg');
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.eot');
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.woff') format('woff'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.svg#webfontQZOAsODx') format('svg');
 		font-weight: bold;
 		font-style: italic;
 		font-size-adjust: .46;
