@@ -1,0 +1,39 @@
+@media only screen and (max-width: 850px) {
+
+	body {
+		position: relative;
+		overflow-x: hidden;
+		padding-bottom: 10em;
+	}
+
+	#header {
+		position: static;
+		padding: 30px 20px;
+	}
+
+	.sidebar ul {
+		position: absolute;
+		bottom: 5em;
+		width: auto;
+	}
+
+	.copyright {
+		position: absolute;
+		bottom: 0;
+	}
+
+	#content {
+		padding: 30px 20px;
+		width: auto;
+	}
+
+	h2 {
+		font-size: 25px;
+		line-height: 24px;
+	}
+	
+	h3 {
+		font-size: 21px;
+		line-height: 24px;
+	}
+}

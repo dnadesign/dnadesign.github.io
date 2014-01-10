@@ -2,7 +2,7 @@
 layout: post
 tags : [javascript, plugin, lists, menus, columns]
 title: "Pinstripe - a Javascript plugin"
-author: "John Milmine"
+author: "pitchandtone"
 ---
 
 Have you ever had to create a vertical multi-column menu? 

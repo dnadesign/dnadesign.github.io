@@ -5,7 +5,7 @@ all:
 	@grep "^[^#[:space:]].*:$$" Makefile
 
 setup:
-	@gem install jekyll
+	sudo gem install jekyll
 
 launch:
 	@jekyll serve --watch
