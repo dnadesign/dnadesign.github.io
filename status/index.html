@@ -247,6 +247,37 @@ code {
 		opacity: 0.7;
 		font-size: 11px;
 	}
+
+	.summary {
+		list-style: none;
+	}
+		.summary li {
+			margin-bottom: 5px;
+		}
+		.summary span {
+			display: inline-block;
+			font-family: "NationalExtrabold", "National-Extrabold", "Helvetica Neue", Arial, sans-serif;
+			font-size: 12px;
+			height: 30px;
+			width: 30px;
+			text-align: center;
+			line-height: 30px;
+			color: #fff;
+			border-radius: 25px;
+		}
+
+		.summary .critical span {
+			background: rgba(221,11,11,1);
+		}
+
+		.summary .warning span {
+			background: rgb(245,150,0);
+		}
+
+		.summary .info span {
+			color: #000;
+			background: rgb(247,252,255);
+		}
 </style>
 
 <script>
@@ -278,6 +309,12 @@ code {
 		<p>We continuously monitor the status of DNA and all its related services. If there are any interruptions in service, a note will be posted here. If you are experiencing problems connecting to any DNA applications and do not see a notice posted, please email <a href="mailto:dev@dna.co.nz">dev@dna.co.nz</a>.</p>
 
 		<p>For urgent issues, please call the Wellington DNA office on 04 499 0828 and ask for John or Will.</p>
+
+		<ul class="summary">
+			<li class="critical"><span>1</span> critical service outage</li>
+			<li class="warning"><span>2</span> service warnings</li>
+			<li class="info"><span>2</span> service decommissioning warnings</li>
+		</ul>
 	</div>
 
 	<div class="section">
@@ -379,6 +416,42 @@ code {
 				<li>Migration of git.dna.co.nz to gitlab.dna.co.nz from gitolite to GitLab.</li>
 			</ul>
 		</footer>
+	</div>
+
+	<div class="section">
+		<h2>Clients</h2>
+		<p class="meta">Available externally and internally at <a href="http://clients.dna.co.nz/">clients.dna.co.nz</a>. Any questions regarding setup and account information should
+		be directed at John or Will.</p>
+
+		<div class="alert alert-success">
+			<h3>System should be operational</h3>
+			<p>No reported issues.</p>
+		</div>
+
+		<div class="alert alert-info">
+			<h3>Planned decommissioning</h3>
+
+			<p class="pms">On our schedule of work for this year is to decommission our Wellington based clients server. More information will be provided shortly.</p>
+			<p>Please see John regarding any migration details.</p>
+		</div>
+	</div>
+
+	<div class="section">
+		<h2>Support</h2>
+		<p class="meta">Available externally and internally at <a href="http://support.dna.co.nz/">support.dna.co.nz</a>. Any questions regarding setup and account information should
+		be directed at John or Will.</p>
+
+		<div class="alert alert-success">
+			<h3>System should be operational</h3>
+			<p>No reported issues.</p>
+		</div>
+
+		<div class="alert alert-info">
+			<h3>Planned decommissioning</h3>
+
+			<p class="pms">On our schedule of work for this year is to decommission our support server. Wiki connect is migrated to GitLab wiki's, ticket tracking to JIRA / Trello.</p>
+			<p>Please see John regarding any migration details and schedule.</p>
+		</div>
 	</div>
 </body>
 </html>
