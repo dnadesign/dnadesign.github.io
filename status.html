@@ -1,0 +1,384 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<title>DNA Operational Status</title>
+<style>
+@font-face {
+		font-family: 'NationalExtrabold';
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.eot');
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.woff') format('woff'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabold-webfont.svg#webfontidGqM69c') format('svg');
+		font-weight: bold;
+		font-style: normal;
+		font-size-adjust: .46;
+}
+
+@font-face {
+		font-family: 'NationalExtrabold';
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.eot');
+		src: url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.eot?iefix') format('eot'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.woff') format('woff'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.ttf') format('truetype'),
+				url('http://dna.co.nz/mysite/fonts/national-extrabolditalic-webfont.svg#webfontQZOAsODx') format('svg');
+		font-weight: bold;
+		font-style: italic;
+		font-size-adjust: .46;
+}
+
+body {
+	width: 90%;
+	max-width: 460px;
+	color: #727272;
+	margin: 40px auto;
+	padding: 5%;
+	border: 1px solid #dfdfdf;
+	position: relative;
+	outline: 4px solid #f9f9f9;
+	font: 13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a {
+	color: #39c;
+	text-decoration: none;
+}
+
+p {
+	margin: 0 0 10px 0;
+}
+
+h3 {
+	padding-bottom: 5px;
+}
+
+.updated {
+	position: absolute;
+	top: 45px;
+	right: 40px;
+	font-size: 10px;
+}
+	.updated strong {
+		display: block;
+		font-family: "NationalExtrabold", "National-Extrabold", "Helvetica Neue", Arial, sans-serif;
+		text-transform: uppercase;
+		color: #333;
+		font-weight: bold;
+		font-size: 20px;
+		text-transform: uppercase;
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 1;
+		font-size-adjust: 0.46;
+		letter-spacing: -1px;
+	}
+
+.meta a {
+	color: #999;
+	text-decoration: underline;
+	text-transform: lowercase;
+}
+
+
+h1, h2, h3, h4 {
+	font-family: "NationalExtrabold", "National-Extrabold", "Helvetica Neue", Arial, sans-serif;
+	color: #333;
+	font-weight: bold;
+	font-size: 20px;
+	text-transform: uppercase;
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 1;
+	font-size-adjust: 0.46;
+	letter-spacing: -1px;
+}
+
+.logo {
+	margin-bottom: 30px;
+	display: block;
+}
+
+.section {
+	padding-bottom: 20px;
+	border-top: 1px solid #eee;
+	padding-top: 20px;
+}
+
+.intro {
+	padding-bottom: 20px;
+}
+
+.pms {
+	padding-bottom: 5px;
+}
+
+code {
+	font-size: 11px;
+}
+
+.alert {
+	padding: 12px 35px 12px 14px;
+	text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2);
+	background-color: #fff;
+	border: 1px solid #000;
+	max-width: 540px;
+	margin: 0 auto 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	position: relative;
+	overflow: hidden;
+}
+
+	.alert p,
+	.alert li {
+		font-size: 13px;
+		line-height: 18px;
+		margin: 0;
+		opacity: 0.8;
+	}
+
+		.alert li {
+			list-style: disc;
+			margin: 0 0 0 10px;
+			padding: 0;
+			list-style-position: inside;
+		}
+
+		.alert ul {
+			margin: 5px 0;
+		}
+
+
+	.alert a {
+		color: inherit;
+		font-weight: bold;
+	}
+
+	.alert strong {
+		color: inherit;
+	}
+
+	.alert.alert-success {
+		color: #fff;
+		border-color: #52910e;
+		text-shadow: 0 -1px 1px #52910e;
+		background: rgb(135,219,37); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(135,219,37,1) 0%, rgba(111,166,6,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(135,219,37,1)), color-stop(100%,rgba(111,166,6,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(135,219,37,1) 0%,rgba(111,166,6,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(135,219,37,1) 0%,rgba(111,166,6,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(135,219,37,1) 0%,rgba(111,166,6,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom, rgba(135,219,37,1) 0%,rgba(111,166,6,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87db25', endColorstr='#6fa606',GradientType=0 ); /* IE6-9 */
+	}
+		.alert.alert-success h3 {
+			color: #fff;
+		}
+
+	.alert.alert-danger {
+		color: #fff;
+		border-color: #8a0000;
+		background: rgb(221,11,11); /* Old browsers */
+		text-shadow: 0 -1px 1px rgba(162,0,0,1);
+		background: -moz-linear-gradient(top, rgba(221,11,11,1) 0%, rgba(162,0,0,1) 99%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(221,11,11,1)), color-stop(99%,rgba(162,0,0,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(221,11,11,1) 0%,rgba(162,0,0,1) 99%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(221,11,11,1) 0%,rgba(162,0,0,1) 99%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(221,11,11,1) 0%,rgba(162,0,0,1) 99%); /* IE10+ */
+		background: linear-gradient(to bottom, rgba(221,11,11,1) 0%,rgba(162,0,0,1) 99%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd0b0b', endColorstr='#a20000',GradientType=0 ); /* IE6-9 */
+	}
+		.alert.alert-danger h3 {
+			color: #fff;
+		}
+	.alert.alert-warning {
+		color: #542400;
+		border-color: #dd7d00;
+		text-shadow: 0 -1px 0 #f6920f;
+		background: rgb(245,150,0); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(255,174,0,1) 1%, rgba(235,133,0,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,174,0,1)), color-stop(100%,rgba(235,133,0,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(255,174,0,1) 1%,rgba(235,133,0,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(255,174,0,1) 1%,rgba(235,133,0,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(255,174,0,1) 1%,rgba(235,133,0,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom, rgba(255,174,0,1) 1%,rgba(235,133,0,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae00', endColorstr='#eb8500',GradientType=0 ); /* IE6-9 */
+	}
+		.alert.alert-warning h3 {
+			color: #542400;
+		}
+
+	.alert.alert-info,
+	.highlight-bg {
+		color: #363f45;
+		border-color: #bcd2dc;
+		text-shadow: 0 -1px 0 #cbe3ee;
+		background: rgb(247,252,255); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(247,252,255,1) 1%, rgba(207,222,229,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(247,252,255,1)), color-stop(100%,rgba(207,222,229,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(247,252,255,1) 1%,rgba(207,222,229,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(247,252,255,1) 1%,rgba(207,222,229,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(247,252,255,1) 1%,rgba(207,222,229,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom, rgba(247,252,255,1) 1%,rgba(207,222,229,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fcff', endColorstr='#cfdee5',GradientType=0 ); /* IE6-9 */
+	}
+		.alert.alert-info h3 {
+			color: #363f45;
+		}
+
+	footer ul {
+		display: none;
+	}
+
+	footer p {
+		text-decoration: underline;
+		color: #999;
+		cursor: pointer;
+	}
+		footer p:hover {
+			text-decoration: none;
+		}
+
+	.alert .meta {
+		margin-top: -5px;
+		margin-bottom: 5px;
+		opacity: 0.7;
+		font-size: 11px;
+	}
+</style>
+
+<script>
+	var toggle = function(e) {
+		var nextSibling = e.nextSibling;
+		
+		while(nextSibling && nextSibling.nodeType != 1) {
+			nextSibling = nextSibling.nextSibling
+		}
+
+		if (nextSibling.style.display === 'block') {
+			e.textContent = "Recently resolved issues..";
+			nextSibling.style.display = 'none';
+		} else {
+			e.textContent = "Hide Recently resolved issues..";
+			nextSibling.style.display = 'block'
+		}
+	};
+ </script>
+</head>
+<body>
+	<a href="/" class="logo"><img class="png-fix" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAkBAMAAAAdh/vEAAAAMFBMVEX///8rKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKyum1zVnAAAAD3RSTlMAESIzRFVmd4iZqrvM3e5GKvWZAAABqUlEQVQ4y5XUTWrCQBQA4GeMomAxB6iQA5Tiplt1IaVLb2B6gx4hUCgBoW5Kt9oTmKUgRXoC216gi9J1xJb6E+PrvMlMnBRFZzbDvMzHy3szCYDOMF3QG8WpJmhrgmzg64HzTVVrf2bym9MCJXQKlg7obkZ3On3NIq4vXnUOYW3DmU5fy9EYcQrIR/jIqzmJVzhsyV25jgi5UKdpCmMRWNqUVSwwcsT+DxlpQP2rWR30YSAjC/a8IBcY8oyZHm5B+brzzKZuEnpSAb4QON2uWforxBUoYJUCKwI9FZi32eBNBawuBbDkkEMVwE2N7hKBh0te+oyDyPMmtPJF00LPEyATfEIMXDADahQHIUtOvflm159ejXVPgCI6CYAaBW0BoMLmeVxCHxJQnsMW5CnoSJCPq6a0lgJ8BQC9hSsBbYnAkM0SoNRSAc1+AoiDKY5TAgP2A+oa76oK4BDgTR6xsROka0iAenApYKa6dASopM7hMDAmfOux4N24p9jP0SB1W9Ng2WRjD1hbO8Duc0i+MS2wsPRA2AAFtCWY7QND/iNPQCGIwcb5D/4AB0XS94mp5eAAAAAASUVORK5CYII=" alt="DNA - Designing Customer Experience"></a>
+
+	<p class="updated">
+		Last updated <strong>29th Jan 11:47am</strong>
+	</p>
+
+	<div class="intro">
+		<p>We continuously monitor the status of DNA and all its related services. If there are any interruptions in service, a note will be posted here. If you are experiencing problems connecting to any DNA applications and do not see a notice posted, please email <a href="mailto:dev@dna.co.nz">dev@dna.co.nz</a>.</p>
+
+		<p>For urgent issues, please call the Wellington DNA office on 04 499 0828 and ask for John or Will.</p>
+	</div>
+
+	<div class="section">
+		<h2>Virtual Private Network (VPN)</h2>
+		<p class="meta"><a href="http://vpn.dna.co.nz">vpn.dna.co.nz</a>, <a href="http://wellington.dna.co.nz:4433">wellington.dna.co.nz</a>, <a href="http://auckland.dna.co.nz:4433">auckland.dna.co.nz</a></p>
+
+		<div class="alert alert-danger">
+			<h3>Currently down</h3>
+
+			<p>Usage of the VPN is currently not recommended. Our provider has been notified and the infrastructure team is working with them on a resolution.</p>
+		</div>
+	</div>
+
+	<div class="section">
+		<h2>Fileserver</h2>
+		<p class="meta">wgtndc, auckdc</p>
+
+		<div class="alert alert-warning">
+			<h3>All systems should be operational, VPN access on Mavericks is dodgy.</h3>
+
+			<p>Accessing the fileserver should be fine in both offices. While on the VPN you</p>
+		</div>
+	</div>
+
+	<div class="section">
+		<h2>Bob</h2>
+		<p class="meta"><a href="http://bob/">Bob</a></p>
+
+		<div class="alert alert-success">
+			<h3>System should be operational</h3>
+			<p>No reported issues.</p>
+		</div>
+
+		<div class="alert alert-info">
+			<h3>Upgrade warning</h3>
+			<p>Bob will be down for 2 hours from Feburary 8th 0900 NZDT till Feburary 8th 1100 NZT for maintenance.</p>
+		</div>
+	</div>
+
+	<div class="section">
+		<h2>Frank</h2>
+		<p class="meta">Only accessible while on the internal network. Accessible at <a href="http://frank/">Frank</a>.</p>
+
+		<div class="alert alert-success">
+			<h3>System should be operational</h3>
+			<p>No reported issues.</p>
+		</div>
+
+		<footer>
+			<p onclick="toggle(this)">Recently resolved issues</p>
+
+			<ul>
+				<li>None.</li>
+			</ul>
+		</footer>
+	</div>
+
+	<div class="section">
+		<h2>FTP</h2>
+		<p class="meta">Available externally and internally at <a href="http://ftp.dna.co.nz/">ftp.dna.co.nz</a>. Any questions regarding setup and account information should
+		be directed at Will.</p>
+
+		<div class="alert alert-success">
+			<h3>System should be operational</h3>
+			<p>No reported issues.</p>
+		</div>
+
+		<footer>
+			<p onclick="toggle(this)">Recently resolved issues</p>
+
+			<ul>
+				<li>None.</li>
+			</ul>
+		</footer>
+	</div>
+
+	<div class="section">
+		<h2>Git</h2>
+		<p class="meta">Available externally and internally at <a href="http://gitlab.dna.co.nz/">gitlab.dna.co.nz</a>. Any questions regarding setup and account information should
+		be directed at John or Will.</p>
+
+		<div class="alert alert-success">
+			<h3>System should be operational</h3>
+			<p>No reported issues.</p>
+		</div>
+
+		<div class="alert alert-warning">
+			<h3>Domain name and git server migrated.</h3>
+
+			<p class="pms">Please note that we now have gitlab subdomain and a new server IP to whitelist.</p>
+			<p class="pms">All repos, accounts and keys have been migrated across to the new server however you will need to update your local remotes to through</p>
+			<p><code>git remote set-url origin git@gitlab.dna.co.nz:dna/project_name.git</code></p>
+		</div>
+
+		<footer>
+			<p onclick="toggle(this)">Recently resolved issues</p>
+
+			<ul>
+				<li>Migration of git.dna.co.nz to gitlab.dna.co.nz from gitolite to GitLab.</li>
+			</ul>
+		</footer>
+	</div>
+</body>
+</html>
