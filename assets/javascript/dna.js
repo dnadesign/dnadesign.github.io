@@ -2,6 +2,9 @@
 	// single page jekyll blog. Clicking an article should open it on the single
 	// page.
 	$(".post-title a, .post-intro").click(function(e) {
+		// need to resolve evaling javascript first
+		return; 
+
 		e.preventDefault();
 
 		var post = $(this).parents('.post'),
