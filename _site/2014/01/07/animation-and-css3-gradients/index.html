@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Animation and CSS3 gradients / Labs / DNA Designed Communications</title>
+		
+
+		<!-- Enable responsive viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/assets/css/mobile.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/assets/demos/demos.css" rel="stylesheet" type="text/css" media="all">
+		
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+		<link href="http://fonts.googleapis.com/css?family=Inconsolata:400" rel="stylesheet" type="text/css">
+		<link href="rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	</head>
+
+	<body>
+		<header id="header">
+			<div class="sidebar">
+				<a href="/" class="logo"><img class="png-fix" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAkBAMAAAAdh/vEAAAAMFBMVEX///8rKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKyum1zVnAAAAD3RSTlMAESIzRFVmd4iZqrvM3e5GKvWZAAABqUlEQVQ4y5XUTWrCQBQA4GeMomAxB6iQA5Tiplt1IaVLb2B6gx4hUCgBoW5Kt9oTmKUgRXoC216gi9J1xJb6E+PrvMlMnBRFZzbDvMzHy3szCYDOMF3QG8WpJmhrgmzg64HzTVVrf2bym9MCJXQKlg7obkZ3On3NIq4vXnUOYW3DmU5fy9EYcQrIR/jIqzmJVzhsyV25jgi5UKdpCmMRWNqUVSwwcsT+DxlpQP2rWR30YSAjC/a8IBcY8oyZHm5B+brzzKZuEnpSAb4QON2uWforxBUoYJUCKwI9FZi32eBNBawuBbDkkEMVwE2N7hKBh0te+oyDyPMmtPJF00LPEyATfEIMXDADahQHIUtOvflm159ejXVPgCI6CYAaBW0BoMLmeVxCHxJQnsMW5CnoSJCPq6a0lgJ8BQC9hSsBbYnAkM0SoNRSAc1+AoiDKY5TAgP2A+oa76oK4BDgTR6xsROka0iAenApYKa6dASopM7hMDAmfOux4N24p9jP0SB1W9Ng2WRjD1hbO8Duc0i+MS2wsPRA2AAFtCWY7QND/iNPQCGIwcb5D/4AB0XS94mp5eAAAAAASUVORK5CYII=" alt="DNA - Designing Customer Experience"></a>
+
+				<p class="tagline">At DNA we define and design experiences. On <strong>labs.dna.co.nz</strong>, we discuss the technical side of those experiences.</p>
+
+				<ul>
+					<li><a href="/rss.xml">labs.dna.co.nz/<rss class="xml"></rss></a></li>
+					<li><a href="http://github.com/dnadesign">github.com/dnadesign</a></li>
+					<li><a href="http://twitter.com/dna_nz">twitter.com/DNA_NZ</a></li>
+
+				</ul>
+				<p class="copyright">&copy; DNA Designed Communications 2014. Wellington &amp; Auckland, Aotearoa.
+				</p>
+			</div>
+		</header>
+
+		<div id="content" role="main">
+			<h1>Animation and CSS3 gradients </h1>
+
+<div class="post-content">
+	<p>In a recent project for <a href="http://www.trustpower.co.nz/">TrustPower</a> we had a play at ways to both incorporate each of the 
+clients&#39; brand colours into the primary application header.</p>
+
+<p>One experiment that ended up working quite well is slowly animating between several CSS3 gradients layers made up of 
+their brand colors, giving a feel of a motion like flow. For an example, see below or on the 
+<a href="http://www.trustpower.co.nz/">TrustPower</a> website.</p>
+
+<div class="demo_container">
+    <div class="gradient gradient_1" aria-role="presentation"><!--  --></div>
+    <div class="gradient gradient_2" aria-role="presentation"><!--  --></div>
+    <div class="gradient gradient_3" aria-role="presentation"><!--  --></div>
+    <div class="gradient gradient_4" aria-role="presentation"><!--  --></div>
+    <div class="gradient gradient_5" aria-role="presentation"><!--  --></div>
+    <div class="gradient gradient_6" aria-role="presentation"><!--  --></div>
+    <div class="gradient gradient_7" aria-role="presentation"><!--  --></div>
+</div>
+
+<p>This effect has been created using several of the new features in CSS3 &#8212; 
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">Keyframes</a>, 
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">Transitions</a>
+and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation">Animation</a> and runs without the use of javascript.</p>
+
+<p>Apart earlier versions of IE, browser support is adequate with all current release browsers 
+(<a href="http://caniuse.com/#feat=css-gradients">1</a>) and an easy fall back of the solid color. Our only other concern was CPU 
+usage for the animations but in our testing across desktop and mobile devices it appears to not take too much of a toll 
+probably due to being GPU hardware accelerated.</p>
+
+<h2>How&#39;d we do it</h2>
+
+<p>The basic premise of the effect is all the gradients are stacked up on top of each other in the DOM and the CSS code
+uses varying levels of opacity specified inside key frames to &#39;fade&#39; the gradients between each other. The smooth 
+animation is completed by a transition of the opacity of each layer.</p>
+
+<p>Our final implementation was written in <a href="http://www.lesscss.org/">LESS</a> and we use <a href="http://lesselements.com/">Elements</a> 
+to consolidate cross-browser prefixes into single, concise declarations which looks something like below. </p>
+
+<div id="gist-8817090">
+<script src="https://gist.github.com/wilr/8817090.js?file="></script>
+<noscript>
+<pre>&lt;div class=&quot;demo_container&quot;&gt;
+    &lt;div class=&quot;gradient gradient_1&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_2&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_3&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_4&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_5&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_6&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_7&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+</noscript>
+</div>
+
+<p>Markup wise, we include each of the gradients as a DOM node. This nodes are going to be controlled through opacity
+and specific timed keyframe values to fade between the colors. As layers at the top of the stack decrease opacity, the 
+colors from gradients below for a phase, and so on through a smooth motion animation cycle of 50 seconds. At any one
+point in the 50 second animate only two of the layers in the DOM will have an opacity that is greater than zero.</p>
+
+<h2>Finishing up</h2>
+
+<p>Using the HTML5 Boilerplate, the HTML node has a helper class <code>.lte9</code> for IE9 and below browsers. Looking for that class 
+we disable all gradients apart from the first one, failing back to a static image.</p>
+
+<p>The other helper is the <code>no-animation</code> class. When modifying the header DOM elements we could the animation could be
+jerky. By applying the <code>no-animation</code> class to the container we can pause the animation on demand by adding the class
+to the parent.</p>
+
+</div>
+
+<footer class="post-footer">
+	<p class="date"> by <a href="http://twitter.com/wilr/">@wilr</a> on 07.01.2014</p>
+</footer>
+
+		</div>
+
+		<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2595529-27']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="assets/javascript/dna.js"></script>
+	</body>
+</html>

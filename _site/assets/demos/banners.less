@@ -1,0 +1,167 @@
+.demo_container {
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 40px;
+	border: 5px solid #fff;
+}
+
+/* mixins - see http://lesselements.com/ */
+@import "elements.less";
+
+/* individual gradients */
+.bannerGradient1 {
+	0%		{ opacity: 0.99; }
+	15%		{ opacity: 0.99; }
+	25%		{ opacity: 0; }
+	75%		{ opacity: 0; }
+	85%		{ opacity: 0.99; }
+	100%	{ opacity: 0.99; }
+}
+
+.bannerGradient2 {
+	10%		{ opacity: 0; }
+	15%		{ opacity: 0.99; }
+	20%		{ opacity: 0; }
+}
+
+.bannerGradient3 {
+	10%   { opacity: 0; }
+	20%		{ opacity: 0.99; }
+	35%		{ opacity: 0; }
+}
+
+.bannerGradient4 {
+	15%   { opacity: 0; }
+	30%		{ opacity: 0.99; }
+	50%		{ opacity: 0.99; }
+	60%		{ opacity: 0; }
+}
+
+.bannerGradient5 {
+	45%   { opacity: 0; }
+	50% 	{ opacity: 0.99; }
+	55%		{ opacity: 0; }
+}
+
+.bannerGradient6 {
+	45%   { opacity: 0; }
+	55% 	{ opacity: 0.99; }
+	70% 	{ opacity: 0.99; }
+	80%		{ opacity: 0; }
+}
+
+.bannerGradient7 {
+	65%   { opacity: 0; }
+	75% 	{ opacity: 0.99; }
+	80% 	{ opacity: 0.99; }
+	90%		{ opacity: 0; }
+}
+
+@-webkit-keyframes bannerGradient1 {	.bannerGradient1; }
+@-moz-keyframes bannerGradient1 {		.bannerGradient1; }
+@-o-keyframes bannerGradient1 { 		.bannerGradient1; }
+@keyframes bannerGradient1 { 			.bannerGradient1; }
+
+@-webkit-keyframes bannerGradient2 {	.bannerGradient2; }
+@-moz-keyframes bannerGradient2 {		.bannerGradient2; }
+@-o-keyframes bannerGradient2 { 		.bannerGradient2; }
+@keyframes bannerGradient2 { 			.bannerGradient2; }
+
+@-webkit-keyframes bannerGradient3 {	.bannerGradient3; }
+@-moz-keyframes bannerGradient3 {		.bannerGradient3; }
+@-o-keyframes bannerGradient3 { 		.bannerGradient3; }
+@keyframes bannerGradient3 { 			.bannerGradient3; }
+
+@-webkit-keyframes bannerGradient4 {	.bannerGradient4; }
+@-moz-keyframes bannerGradient4 {		.bannerGradient4; }
+@-o-keyframes bannerGradient4 { 		.bannerGradient4; }
+@keyframes bannerGradient4 { 			.bannerGradient4; }
+
+@-webkit-keyframes bannerGradient5 {	.bannerGradient5; }
+@-moz-keyframes bannerGradient5 {		.bannerGradient5; }
+@-o-keyframes bannerGradient5 { 		.bannerGradient5; }
+@keyframes bannerGradient5 { 			.bannerGradient5; }
+
+@-webkit-keyframes bannerGradient6 {	.bannerGradient6; }
+@-moz-keyframes bannerGradient6 {		.bannerGradient6; }
+@-o-keyframes bannerGradient6 { 		.bannerGradient6; }
+@keyframes bannerGradient6 { 			.bannerGradient6; }
+
+@-webkit-keyframes bannerGradient7 {	.bannerGradient7; }
+@-moz-keyframes bannerGradient7 {		.bannerGradient7; }
+@-o-keyframes bannerGradient7 { 		.bannerGradient7; }
+@keyframes bannerGradient7 { 			.bannerGradient7; }
+
+@banner_animate_length: 50s;
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.gradient {
+	height: 40px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+
+	.opacity(0);
+	.transition(opacity 10s);
+}
+
+	.gradient_1 {
+		.horizontal-gradient(#2a7ddd, #6C217D); /* navy blue, purple */
+		.animate(bannerGradient1 @banner_animate_length infinite);
+	}
+
+	.gradient_2 {
+		.horizontal-gradient(#BF3966, #43044D); /* purple, red */
+		.animate(bannerGradient2 @banner_animate_length infinite);
+	}
+
+	.gradient_3 {
+		.horizontal-gradient(#FF794D, #730130); /* red, red */
+		.animate(bannerGradient3 @banner_animate_length infinite);
+	}
+
+	.gradient_4 {
+		.horizontal-gradient(#FFCC00, #ff5500);  /* yellow, orange */
+		.animate(bannerGradient4 @banner_animate_length infinite);
+	}
+
+	.gradient_5 {
+		.horizontal-gradient(#FAEF18, #ebd300);  /* yellow, yellow */
+		.animate(bannerGradient5 @banner_animate_length infinite);
+	}
+
+	.gradient_6 {
+		.horizontal-gradient(#C8DC37, #559A0B); /* yellow, green */
+		.animate(bannerGradient6 @banner_animate_length infinite);
+	}
+
+	.gradient_7 {
+		.horizontal-gradient(#66ecd3, #184E8C); /* turqiouse, blue */
+		.animate(bannerGradient7 @banner_animate_length infinite);
+	}
+
+	.lte9 .gradient {
+		display: none;
+	}
+
+	.lte9 .gradient_1 {
+		display: block;
+	}
+
+.no-animation .gradient {
+	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	-o-animation-play-state: paused;
+	animation-play-state: paused;
+
+	.transition(none);
+}

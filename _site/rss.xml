@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>DNA Labs</title>
+        <description>DNA Labs - </description>
+        <link>http://labs.dna.co.nz</link>
+        <link>http://labs.dna.co.nz</link>
+        <lastBuildDate>2014-02-07T16:03:17+13:00</lastBuildDate>
+        <pubDate>2014-02-07T16:03:17+13:00</pubDate>
+        <ttl>1800</ttl>
+
+
+        <item>
+                <title>Resolving SilverStripe Error 'Hmm - depth calc wrong'</title>
+                <description>&lt;p&gt;While developing with SilverStripe 3 you may run into an error which looks 
+something like:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Fatal error: Hmm - depth calc wrong, hit negatives, see: app/code/MyClass.php in ConfigStaticManifest.php on line 240
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;While this error may seem confusing, resolving it usually is as straightforward
+as resolving a normal syntax error in the mentioned file.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note the error may only show itself when you&amp;#39;re doing a database rebuild or a 
+flush operation since it originates from SilverStripe trying to parse every
+class.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To start tracking down the syntax error look at the file mentioned in the error
+message. In our error message from above, that file is &lt;code&gt;app/code/MyClass.php&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can then use the PHP CLI binary to syntax check that particular file and 
+track down the syntax error in question&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;php -l app/code/MyClass.php
+
+PHP Parse error:  syntax error, unexpected &amp;#39;return&amp;#39; (T_RETURN), expecting function (T_FUNCTION) in app/code/MyClass.php on line 459
+
+Parse error: syntax error, unexpected &amp;#39;return&amp;#39; (T_RETURN), expecting function (T_FUNCTION) in app/code/MyClass.php on line 459
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is not the most user friendly error message from SilverStripe and likely
+a common issue if the number of cursing we&amp;#39;ve done here is any indication (and
+the IRC / Github discussions [1] [2] raised for it).&lt;/p&gt;
+
+&lt;p&gt;As &lt;a href=&quot;api.silverstripe.org/3.1/class-ErrorControlChain.html&quot;&gt;ErrorControlChain&lt;/a&gt; is 
+still new this is a temporary issue that will be resolved for the next major 
+release.&lt;/p&gt;
+
+&lt;p&gt;[1] &lt;a href=&quot;https://github.com/silverstripe/silverstripe-framework/pull/2470&quot;&gt;https://github.com/silverstripe/silverstripe-framework/pull/2470&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&quot;http://logs.simon.geek.nz/index.php?date=2013-10-18&quot;&gt;http://logs.simon.geek.nz/index.php?date=2013-10-18&lt;/a&gt;&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2014/10/01/resolving-silverstripe-error-depth-calc</link>
+                <guid>http://labs.dna.co.nz/2014/10/01/resolving-silverstripe-error-depth-calc</guid>
+                <pubDate>2014-10-01T00:00:00+13:00</pubDate>
+        </item>
+
+        <item>
+                <title>How to do it the DNA way</title>
+                <description>&lt;p&gt;We&amp;#39;ve been doing front end development for a while and have been seeing a couple of trends for us.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Bigger and more complex jobs due to responsive and increasing online services.&lt;/li&gt;
+&lt;li&gt;Bigger and more diverse teams needed due to bigger jobs.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This meant we needed to standardize the way we work.&lt;/p&gt;
+
+&lt;p&gt;In the past we had look at OOCSS to solve our issues however with responsive that gets quite clunky quite quickly. You 
+end up with needing col-sm-1, col-md-2, col-lrg-1 etc. While that works OK-ish for grids it doesn&amp;#39;t for much else. We 
+had been using classes like f-left for float:left, however now we were going to need, sm-f-left, md-f-left, lrg-f-left 
+etc. &lt;/p&gt;
+
+&lt;p&gt;Wasn&amp;#39;t going to be fun for anyone.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile we&amp;#39;d seen BEM being talked about and thought it looked a bit weird.&lt;/p&gt;
+
+&lt;p&gt;We had decided on mobile first on our first big responsive project (wellington.govt.nz), and had created a stylesheet 
+for each breakpoint. Each stylesheet was getting quite large by the time Will got assigned to the job, so he introduced 
+Grunt and we&amp;#39;ve never looked back.&lt;/p&gt;
+
+&lt;p&gt;We then moved onto our next big responsive project and while Grunt was helping us keep stylesheets smaller, there was a 
+lot of searching going on. It wasn&amp;#39;t clear what bits were re-usable and which weren&amp;#39;t. This resulted in a lot of 
+coupling and some hard to maintain code.&lt;/p&gt;
+
+&lt;p&gt;We looked at BEM again. Now it made sense.&lt;/p&gt;
+
+&lt;p&gt;So we re-factored our grunt tasks, included our javascript in a component folders alongside our CSS and have recommended 
+sticking to completely independent components as much as possible.&lt;/p&gt;
+
+&lt;p&gt;The goals are:
+ * Separate development stylesheets for each breakpoint
+ * Mobile browsers should receive their styles first.
+ * One minified production stylesheet
+ * Classname and breakpoint stylesheet pinpoint exactly which file needs to be edited&lt;/p&gt;
+
+&lt;p&gt;It&amp;#39;ll probably morph a bit over time, but so far so good.&lt;/p&gt;
+
+&lt;p&gt;Comments, questions, thoughts welcome on &lt;a href=&quot;https://github.com/dnadesign/dna_frontend_boilerplate&quot;&gt;github.com/dnadesign/dna_frontend_boilerplate&lt;/a&gt;&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2014/09/01/dna-way</link>
+                <guid>http://labs.dna.co.nz/2014/09/01/dna-way</guid>
+                <pubDate>2014-09-01T00:00:00+12:00</pubDate>
+        </item>
+
+        <item>
+                <title>Animation and CSS3 gradients</title>
+                <description>&lt;p&gt;In a recent project for &lt;a href=&quot;http://www.trustpower.co.nz/&quot;&gt;TrustPower&lt;/a&gt; we had a play at ways to both incorporate each of the 
+clients&amp;#39; brand colours into the primary application header.&lt;/p&gt;
+
+&lt;p&gt;One experiment that ended up working quite well is slowly animating between several CSS3 gradients layers made up of 
+their brand colors, giving a feel of a motion like flow. For an example, see below or on the 
+&lt;a href=&quot;http://www.trustpower.co.nz/&quot;&gt;TrustPower&lt;/a&gt; website.&lt;/p&gt;
+
+&lt;div class=&quot;demo_container&quot;&gt;
+    &lt;div class=&quot;gradient gradient_1&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_2&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_3&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_4&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_5&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_6&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+    &lt;div class=&quot;gradient gradient_7&quot; aria-role=&quot;presentation&quot;&gt;&lt;!--  --&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This effect has been created using several of the new features in CSS3 &amp;#8212; 
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes&quot;&gt;Keyframes&lt;/a&gt;, 
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/transition&quot;&gt;Transitions&lt;/a&gt;
+and &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/animation&quot;&gt;Animation&lt;/a&gt; and runs without the use of javascript.&lt;/p&gt;
+
+&lt;p&gt;Apart earlier versions of IE, browser support is adequate with all current release browsers 
+(&lt;a href=&quot;http://caniuse.com/#feat=css-gradients&quot;&gt;1&lt;/a&gt;) and an easy fall back of the solid color. Our only other concern was CPU 
+usage for the animations but in our testing across desktop and mobile devices it appears to not take too much of a toll 
+probably due to being GPU hardware accelerated.&lt;/p&gt;
+
+&lt;h2&gt;How&amp;#39;d we do it&lt;/h2&gt;
+
+&lt;p&gt;The basic premise of the effect is all the gradients are stacked up on top of each other in the DOM and the CSS code
+uses varying levels of opacity specified inside key frames to &amp;#39;fade&amp;#39; the gradients between each other. The smooth 
+animation is completed by a transition of the opacity of each layer.&lt;/p&gt;
+
+&lt;p&gt;Our final implementation was written in &lt;a href=&quot;http://www.lesscss.org/&quot;&gt;LESS&lt;/a&gt; and we use &lt;a href=&quot;http://lesselements.com/&quot;&gt;Elements&lt;/a&gt; 
+to consolidate cross-browser prefixes into single, concise declarations which looks something like below. &lt;/p&gt;
+
+&lt;div id=&quot;gist-8817090&quot;&gt;
+&lt;script src=&quot;https://gist.github.com/wilr/8817090.js?file=&quot;&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&amp;lt;div class=&amp;quot;demo_container&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_1&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_2&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_3&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_4&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_5&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_6&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;gradient gradient_7&amp;quot; aria-role=&amp;quot;presentation&amp;quot;&amp;gt;&amp;lt;!--  --&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Markup wise, we include each of the gradients as a DOM node. This nodes are going to be controlled through opacity
+and specific timed keyframe values to fade between the colors. As layers at the top of the stack decrease opacity, the 
+colors from gradients below for a phase, and so on through a smooth motion animation cycle of 50 seconds. At any one
+point in the 50 second animate only two of the layers in the DOM will have an opacity that is greater than zero.&lt;/p&gt;
+
+&lt;h2&gt;Finishing up&lt;/h2&gt;
+
+&lt;p&gt;Using the HTML5 Boilerplate, the HTML node has a helper class &lt;code&gt;.lte9&lt;/code&gt; for IE9 and below browsers. Looking for that class 
+we disable all gradients apart from the first one, failing back to a static image.&lt;/p&gt;
+
+&lt;p&gt;The other helper is the &lt;code&gt;no-animation&lt;/code&gt; class. When modifying the header DOM elements we could the animation could be
+jerky. By applying the &lt;code&gt;no-animation&lt;/code&gt; class to the container we can pause the animation on demand by adding the class
+to the parent.&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2014/01/07/animation-and-css3-gradients</link>
+                <guid>http://labs.dna.co.nz/2014/01/07/animation-and-css3-gradients</guid>
+                <pubDate>2014-01-07T00:00:00+13:00</pubDate>
+        </item>
+
+        <item>
+                <title>puts "Hello World"</title>
+                <description>&lt;p&gt;Welcome to labs.dna.co.nz, a collection of showcases, code snippets, how-tos and
+general geekery from myself (&lt;a href=&quot;http://twitter.com/wilr&quot;&gt;@wilr&lt;/a&gt;), John
+(&lt;a href=&quot;http://twitter.com/pitchandtone&quot;&gt;@pitchandtone&lt;/a&gt;) and the rest of the
+&lt;a href=&quot;http://dna.co.nz&quot;&gt;DNA&lt;/a&gt; dev team.&lt;/p&gt;
+
+&lt;p&gt;We set this little blog up so that we could share our insights and some of the
+neat and exciting stuff that we experiment and deploy for our clients.&lt;/p&gt;
+
+&lt;p&gt;Whether it&amp;#39;s prototyping UX interactions, scaling infrastructure, application
+design, front end engineering patterns or even project management, we tackle a
+lot of interesting and diverse challenges. Most of which is kept behind the
+scenes, discussed in the dark corners of the office because frankly, the
+design team just want their grid followed, this thing to swoosh over to
+fade into this and the logo bigger.&lt;/p&gt;
+
+&lt;p&gt;But like an iceberg, the bulk of the power (and potential for trouble) lies
+below the surface.&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2013/04/04/puts-hello-world</link>
+                <guid>http://labs.dna.co.nz/2013/04/04/puts-hello-world</guid>
+                <pubDate>2013-04-04T00:00:00+13:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>

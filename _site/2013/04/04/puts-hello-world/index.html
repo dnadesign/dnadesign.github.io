@@ -2,8 +2,8 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>{{ page.title }} / Labs / DNA Designed Communications</title>
-		{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+		<title>puts "Hello World" / Labs / DNA Designed Communications</title>
+		
 
 		<!-- Enable responsive viewport -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,16 +38,52 @@
 					<li><a href="http://twitter.com/dna_nz">twitter.com/DNA_NZ</a></li>
 
 				</ul>
-				<p class="copyright">&copy; DNA Designed Communications {{ site.time | date: '%Y' }}. Wellington &amp; Auckland, Aotearoa.
+				<p class="copyright">&copy; DNA Designed Communications 2014. Wellington &amp; Auckland, Aotearoa.
 				</p>
 			</div>
 		</header>
 
 		<div id="content" role="main">
-			{{ content }}
+			<h1>puts "Hello World" </h1>
+
+<div class="post-content">
+	<p>Welcome to labs.dna.co.nz, a collection of showcases, code snippets, how-tos and
+general geekery from myself (<a href="http://twitter.com/wilr">@wilr</a>), John
+(<a href="http://twitter.com/pitchandtone">@pitchandtone</a>) and the rest of the
+<a href="http://dna.co.nz">DNA</a> dev team.</p>
+
+<p>We set this little blog up so that we could share our insights and some of the
+neat and exciting stuff that we experiment and deploy for our clients.</p>
+
+<p>Whether it&#39;s prototyping UX interactions, scaling infrastructure, application
+design, front end engineering patterns or even project management, we tackle a
+lot of interesting and diverse challenges. Most of which is kept behind the
+scenes, discussed in the dark corners of the office because frankly, the
+design team just want their grid followed, this thing to swoosh over to
+fade into this and the logo bigger.</p>
+
+<p>But like an iceberg, the bulk of the power (and potential for trouble) lies
+below the surface.</p>
+
+</div>
+
+<footer class="post-footer">
+	<p class="date"> by <a href="http://twitter.com/wilr/">@wilr</a> on 04.04.2013</p>
+</footer>
+
 		</div>
 
-		{% include stats.html %}
+		<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2595529-27']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="assets/javascript/dna.js"></script>
