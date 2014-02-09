@@ -1,6 +1,4 @@
-_site/*
 _theme_packages/*
-
 Thumbs.db
 .DS_Store
 
@@ -14,3 +12,4 @@ assets/fonts
 /.buildpath
 /.project
 /.settings
+node_modules
