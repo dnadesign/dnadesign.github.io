@@ -283,7 +283,7 @@ code {
 <script>
 	var toggle = function(e) {
 		var nextSibling = e.nextSibling;
-		
+
 		while(nextSibling && nextSibling.nodeType != 1) {
 			nextSibling = nextSibling.nextSibling
 		}
@@ -321,10 +321,10 @@ code {
 		<h2>Virtual Private Network (VPN)</h2>
 		<p class="meta"><a href="http://vpn.dna.co.nz">vpn.dna.co.nz</a>, <a href="http://wellington.dna.co.nz:4433">wellington.dna.co.nz</a>, <a href="http://auckland.dna.co.nz:4433">auckland.dna.co.nz</a></p>
 
-		<div class="alert alert-danger">
-			<h3>Currently down</h3>
+		<div class="alert alert-success">
+			<h3>Currently working</h3>
 
-			<p>Usage of the VPN is currently not recommended. Our provider has been notified and the infrastructure team is working with them on a resolution.</p>
+			<p>Working correctly.</p>
 		</div>
 	</div>
 
@@ -333,9 +333,9 @@ code {
 		<p class="meta">wgtndc, auckdc</p>
 
 		<div class="alert alert-warning">
-			<h3>All systems should be operational, VPN access on Mavericks is dodgy.</h3>
+			<h3>All systems should be operational, VPN access on Mavericks is dodgy and overall a bit slow.</h3>
 
-			<p>Accessing the fileserver should be fine in both offices. While on the VPN you</p>
+			<p>Accessing the fileserver should be fine in both offices. While on the VPN you may trying http://cocoatech.com/pathfinder/</p>
 		</div>
 	</div>
 
@@ -420,8 +420,7 @@ code {
 
 	<div class="section">
 		<h2>Clients</h2>
-		<p class="meta">Available externally and internally at <a href="http://clients.dna.co.nz/">clients.dna.co.nz</a>. Any questions regarding setup and account information should
-		be directed at John or Will.</p>
+		<p class="meta">Available externally and internally at <a href="http://clients.dna.co.nz/">clients.dna.co.nz</a>. Any questions regarding setup and account information should be directed at John or Will.</p>
 
 		<div class="alert alert-success">
 			<h3>System should be operational</h3>
@@ -437,9 +436,18 @@ code {
 	</div>
 
 	<div class="section">
+		<h2>Preview</h2>
+		<p class="meta">Available externally and internally at <a href="http://preview.dna.co.nz/">preview.dna.co.nz</a>. Any questions regarding setup and account information should be directed at John or Will.</p>
+
+		<div class="alert alert-warning">
+			<h3>System should be is currently serving assets quite slowly.</h3>
+			<p>Looks like nginx and apache are having a fight.</p>
+		</div>
+	</div>
+
+	<div class="section">
 		<h2>Support</h2>
-		<p class="meta">Available externally and internally at <a href="http://support.dna.co.nz/">support.dna.co.nz</a>. Any questions regarding setup and account information should
-		be directed at John or Will.</p>
+		<p class="meta">Available externally and internally at <a href="http://support.dna.co.nz/">support.dna.co.nz</a>. Any questions regarding setup and account information should be directed at John or Will.</p>
 
 		<div class="alert alert-success">
 			<h3>System should be operational</h3>
@@ -449,7 +457,7 @@ code {
 		<div class="alert alert-info">
 			<h3>Planned decommissioning</h3>
 
-			<p class="pms">On our schedule of work for this year is to decommission our support server. Wiki connect is migrated to GitLab wiki's, ticket tracking to JIRA / Trello.</p>
+			<p class="pms">On our schedule of work for this year is to decommission our support server. Wiki connect is migrated to GitLab wiki's, ticket tracking to Trello.</p>
 			<p>Please see John regarding any migration details and schedule.</p>
 		</div>
 	</div>

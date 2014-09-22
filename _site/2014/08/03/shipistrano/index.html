@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Deployments and Shipistrano / Labs / DNA Designed Communications</title>
+		
+
+		<!-- Enable responsive viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/assets/css/mobile.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/assets/demos/demos.css" rel="stylesheet" type="text/css" media="all">
+		
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+		<link href="http://fonts.googleapis.com/css?family=Inconsolata:400" rel="stylesheet" type="text/css">
+		<link href="rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	</head>
+
+	<body>
+		<header id="header">
+			<div class="sidebar">
+				<a href="/" class="logo"><img class="png-fix" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAkBAMAAAAdh/vEAAAAMFBMVEX///8rKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKyum1zVnAAAAD3RSTlMAESIzRFVmd4iZqrvM3e5GKvWZAAABqUlEQVQ4y5XUTWrCQBQA4GeMomAxB6iQA5Tiplt1IaVLb2B6gx4hUCgBoW5Kt9oTmKUgRXoC216gi9J1xJb6E+PrvMlMnBRFZzbDvMzHy3szCYDOMF3QG8WpJmhrgmzg64HzTVVrf2bym9MCJXQKlg7obkZ3On3NIq4vXnUOYW3DmU5fy9EYcQrIR/jIqzmJVzhsyV25jgi5UKdpCmMRWNqUVSwwcsT+DxlpQP2rWR30YSAjC/a8IBcY8oyZHm5B+brzzKZuEnpSAb4QON2uWforxBUoYJUCKwI9FZi32eBNBawuBbDkkEMVwE2N7hKBh0te+oyDyPMmtPJF00LPEyATfEIMXDADahQHIUtOvflm159ejXVPgCI6CYAaBW0BoMLmeVxCHxJQnsMW5CnoSJCPq6a0lgJ8BQC9hSsBbYnAkM0SoNRSAc1+AoiDKY5TAgP2A+oa76oK4BDgTR6xsROka0iAenApYKa6dASopM7hMDAmfOux4N24p9jP0SB1W9Ng2WRjD1hbO8Duc0i+MS2wsPRA2AAFtCWY7QND/iNPQCGIwcb5D/4AB0XS94mp5eAAAAAASUVORK5CYII=" alt="DNA - Designing Customer Experience"></a>
+
+				<p class="tagline">At DNA we define and design experiences. On <strong>labs.dna.co.nz</strong>, we discuss the technical side of those experiences.</p>
+
+				<ul>
+					<li><a href="/rss.xml">labs.dna.co.nz/<rss class="xml"></rss></a></li>
+					<li><a href="http://github.com/dnadesign">github.com/dnadesign</a></li>
+					<li><a href="http://twitter.com/dna_nz">twitter.com/DNA_NZ</a></li>
+
+				</ul>
+				<p class="copyright">&copy; DNA Designed Communications 2014. Wellington &amp; Auckland, Aotearoa.
+				</p>
+			</div>
+		</header>
+
+		<div id="content" role="main">
+			<h1>Deployments and Shipistrano </h1>
+
+<div class="post-content">
+	<p>Having a robust deployment system for a web application is the difference between sparking eternal fear or righteous joy
+in your project team when it comes to deploy Tuesdays. In a time not so long ago (and still for quite a few people) we 
+used to deploy sites manually, by hand over File Transfer Protocol (FTP). Maintenance pages would get added to the 
+server, we&#39;d watch files sync slowly over our internet connection then quickly QA and test the site before removing
+the maintenance page and handing it over to the client till next week.</p>
+
+<p>So much has changed since then (and so much hasn&#39;t), but luckily we know and have better ways of doing some of these 
+things. One, is we now script our basic FTP deployments using <a href="https://github.com/heyday/beam">Beam</a>. An awesome little 
+command line tool for deploying websites to servers. </p>
+
+<p>This is a step up over the manual process by automating our deployment tasks and forcing our deployment steps to be 
+defined in configuration files and therefore applied automatically - less you run the risk of your intern not reading 
+your detailed <code>README</code> notes.</p>
+
+<p>Tools like Beam, Git-FTP and the whole host of hosting solutions are great, and if you&#39;re still doing FTP deployments
+definitely invest in a scripted solution. But by a certain point those tools become less effective. In our case, for our 
+bigger clients deploying a site can involve much more ceremony. In these cases we use 
+<a href="http://capistranorb.com/">Capistrano</a> a widely used remote server automation and deployment tool written in 
+Ruby. Not only is it more fully featured (built in rollback, history, asset management) than Git based deployment 
+systems but it gives us a better framework for writing deploy work flows and on the plus site it&#39;s used by
+several other platforms we use such as the <a href="https://www.cwp.govt.nz/">Common Web Platform</a>.</p>
+
+<p>We&#39;ve deployed Capistrano for dozens of our clients but we&#39;ve found each site is never exactly the same. Different 
+platforms, different services, different folder layouts all make for one slightly queezy Devop team.</p>
+
+<p>To strive to make our Capistrano setups consistent (or at least somewhat unified) between projects we&#39;ve been working on 
+<a href="https://github.com/dnadesign/shipistrano">Shipistrano</a>. A shared collection of Capistrano helpers for shipping code 
+with the idea of making reusable helpers that we can plug in and configure depending on the particular application. </p>
+
+<p>For instance, if we&#39;re deploying a Wordpress site we&#39;d include <code>wordpress</code> helper and that&#39;ll add to Capistrano all the 
+configuration we need for managing any instance that has Wordpress. If we ever needed to run a task on our Wordpress 
+sites we could update Shipstrano once and roll out the new version to any project with that helper.  All configuration 
+for the particular site is kept in the top level <code>Capfile</code> while all the recipes and helpers are in the shared 
+Shipstrano repository.</p>
+
+<p>Going back to the Wordpress example, the project developer would add Shipstrano..</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd ~/Sites/project
+git submodule add git@github.com:dnadesign/shipistrano.git cap
+git submodule sync
+git submodule init
+</code></pre></div>
+<p>Then create a Capfile in the root of the project loading the helpers they want along with declaring the normal 
+Capistrano configuration (note we still use v2, upgrading to v3 would make this much nicer).</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">require &#39;rubygems&#39;
+require &#39;railsless-deploy&#39;
+
+set :app,               &quot;somewebsite.co.nz&quot;
+set :repository,        &#39;git@git.dna.co.nz:somewebsite.git&#39;
+set :user,              &#39;&#39;
+set :group,             &#39;&#39;
+set :ip,                &#39;123.456.789.000&#39;
+set :deploy_to,         &quot;/srv/somewebsite.co.nz&quot;
+set :scm,               &#39;git&#39;
+set :scm_username,      &#39;git&#39;
+
+role :web,  &quot;#{ip}&quot;
+
+load &#39;cap/lib/shipistrano&#39;
+
+# Specific stuff for Wordpress
+load &#39;cap/lib/wordpress&#39;
+</code></pre></div>
+<p>The flexibility of the helper approach is great and you can do some useful things all within the cap file simply by
+loading and executing functions from the helpers as you need. Capistrano handles the core work such as backups, rsyncing
+the code, managing dependencies like Composer, NPM modules and Ruby gems, then we&#39;ve got our own helpers for managing 
+assets, database engines, htaccess rules and managing framework specific information (like rebuilding databases, 
+clearing caches), anything we feel we should automate.</p>
+
+<p>The capfile provides a documented and standard way of interacting with our servers. Take example our <code>mysql</code> helper. 
+This adds common support for syncing your local development and remote environments. By loading the helper</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">load &#39;cap/lib/mysql&#39;
+</code></pre></div>
+<p>You&#39;ll get a bunch of functions like <code>mysql:upload</code> and <code>mysql:download</code> for syncing your databases without worrying 
+about how or where. The configuration information is stored in your Capfile, so adding helpers can be reused between 
+sites.</p>
+
+<p>Developers can see a list of all the tasks setup for a project by running <code>cap -vT</code> which lists the task and a 
+description.</p>
+
+<p>On top of that you can use Capistrano namespaces directly into add in multiple environments (say a client preview) or 
+add our production workflow helper for having a <code>production</code> release on top of your staging site. An example capfile for
+that might look like.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">require &#39;rubygems&#39;
+
+def setup()
+    set :repository,        &#39;git@git.dna.co.nz:somewebsite.git&#39;
+    set :mysql_database,    &#39;somewebsite&#39;
+    set :mysql_user,        &#39;somewebsite&#39;
+    set :mysql_ask_for_pass, true
+    set :user,              &#39;somewebsite&#39;
+    set :group,             &#39;psaserv&#39;
+
+    load &#39;cap/lib/shipistrano&#39;
+    load &#39;cap/lib/shipistrano/helpers/production&#39;
+    load &#39;cap/lib/shipistrano/helpers/mysql&#39;
+
+    role :web,  &quot;#{ip}&quot;
+    role :app,  &quot;#{ip}&quot;
+    role :db,   &quot;#{ip}&quot;, :primary =&gt; true
+end
+
+task :production do
+    set :app,               &quot;somewebsite.co.nz&quot;
+    set :ip,                &#39;123.45.67.890&#39;
+    set :deploy_to,         &quot;/var/www/vhosts/#{app}/httpdocs/&quot;
+
+    setup()
+end
+
+task :staging do
+    set :app,               &quot;staging.somewebsite.co.nz&quot;
+    set :ip,                &#39;123.45.67.891&#39;
+    set :deploy_to,         &quot;/var/www/vhosts/#{app}/httpdocs/&quot;
+
+    setup()
+
+    load &#39;cap/lib/shipistrano/helpers/htaccess&#39;
+
+    set :auth_user,         &#39;secure&#39;
+    set :auth_pass,         &#39;protected&#39;
+    set :auth_folder,       &quot;#{deploy_to}/current&quot;
+
+    after(&#39;deploy:update&#39;, &#39;htaccess:auth:protect&#39;)
+end
+</code></pre></div>
+<p>Now we have two tasks production and staging with different configuration. You&#39;ll also note the staging site has a 
+extra helper for adding HTTP Basic Auth preventing unknown outsiders from accessing the site. Because we&#39;ve now got 
+namespaces setup our cap commands can target specific instances.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cap production mysql:upload // upload to production database
+cap staging deploy // deploy to staging
+</code></pre></div>
+<p>As with everything, Shipistrano is a work in progress and opinionated to how we do things. We&#39;ll roll it out on more
+projects and hope to have a robust set of helpers that we can rely on being best practice, tested and useful for our 
+development team so less time spend worrying over the risks of deployment and more time building.</p>
+
+</div>
+
+<footer class="post-footer">
+	<p class="date"> by <a href="http://twitter.com/wilr/">@wilr</a> on 03.08.2014</p>
+</footer>
+
+		</div>
+
+		<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2595529-27']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="assets/javascript/dna.js"></script>
+	</body>
+</html>

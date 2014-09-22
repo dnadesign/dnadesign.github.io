@@ -5,8 +5,8 @@
         <description>DNA Labs - </description>
         <link>http://labs.dna.co.nz</link>
         <link>http://labs.dna.co.nz</link>
-        <lastBuildDate>2014-02-07T16:03:17+13:00</lastBuildDate>
-        <pubDate>2014-02-07T16:03:17+13:00</pubDate>
+        <lastBuildDate>2014-09-22T22:31:54+12:00</lastBuildDate>
+        <pubDate>2014-09-22T22:31:54+12:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -102,6 +102,148 @@ sticking to completely independent components as much as possible.&lt;/p&gt;
         </item>
 
         <item>
+                <title>Deployments and Shipistrano</title>
+                <description>&lt;p&gt;Having a robust deployment system for a web application is the difference between sparking eternal fear or righteous joy
+in your project team when it comes to deploy Tuesdays. In a time not so long ago (and still for quite a few people) we 
+used to deploy sites manually, by hand over File Transfer Protocol (FTP). Maintenance pages would get added to the 
+server, we&amp;#39;d watch files sync slowly over our internet connection then quickly QA and test the site before removing
+the maintenance page and handing it over to the client till next week.&lt;/p&gt;
+
+&lt;p&gt;So much has changed since then (and so much hasn&amp;#39;t), but luckily we know and have better ways of doing some of these 
+things. One, is we now script our basic FTP deployments using &lt;a href=&quot;https://github.com/heyday/beam&quot;&gt;Beam&lt;/a&gt;. An awesome little 
+command line tool for deploying websites to servers. &lt;/p&gt;
+
+&lt;p&gt;This is a step up over the manual process by automating our deployment tasks and forcing our deployment steps to be 
+defined in configuration files and therefore applied automatically - less you run the risk of your intern not reading 
+your detailed &lt;code&gt;README&lt;/code&gt; notes.&lt;/p&gt;
+
+&lt;p&gt;Tools like Beam, Git-FTP and the whole host of hosting solutions are great, and if you&amp;#39;re still doing FTP deployments
+definitely invest in a scripted solution. But by a certain point those tools become less effective. In our case, for our 
+bigger clients deploying a site can involve much more ceremony. In these cases we use 
+&lt;a href=&quot;http://capistranorb.com/&quot;&gt;Capistrano&lt;/a&gt; a widely used remote server automation and deployment tool written in 
+Ruby. Not only is it more fully featured (built in rollback, history, asset management) than Git based deployment 
+systems but it gives us a better framework for writing deploy work flows and on the plus site it&amp;#39;s used by
+several other platforms we use such as the &lt;a href=&quot;https://www.cwp.govt.nz/&quot;&gt;Common Web Platform&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We&amp;#39;ve deployed Capistrano for dozens of our clients but we&amp;#39;ve found each site is never exactly the same. Different 
+platforms, different services, different folder layouts all make for one slightly queezy Devop team.&lt;/p&gt;
+
+&lt;p&gt;To strive to make our Capistrano setups consistent (or at least somewhat unified) between projects we&amp;#39;ve been working on 
+&lt;a href=&quot;https://github.com/dnadesign/shipistrano&quot;&gt;Shipistrano&lt;/a&gt;. A shared collection of Capistrano helpers for shipping code 
+with the idea of making reusable helpers that we can plug in and configure depending on the particular application. &lt;/p&gt;
+
+&lt;p&gt;For instance, if we&amp;#39;re deploying a Wordpress site we&amp;#39;d include &lt;code&gt;wordpress&lt;/code&gt; helper and that&amp;#39;ll add to Capistrano all the 
+configuration we need for managing any instance that has Wordpress. If we ever needed to run a task on our Wordpress 
+sites we could update Shipstrano once and roll out the new version to any project with that helper.  All configuration 
+for the particular site is kept in the top level &lt;code&gt;Capfile&lt;/code&gt; while all the recipes and helpers are in the shared 
+Shipstrano repository.&lt;/p&gt;
+
+&lt;p&gt;Going back to the Wordpress example, the project developer would add Shipstrano..&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;cd ~/Sites/project
+git submodule add git@github.com:dnadesign/shipistrano.git cap
+git submodule sync
+git submodule init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then create a Capfile in the root of the project loading the helpers they want along with declaring the normal 
+Capistrano configuration (note we still use v2, upgrading to v3 would make this much nicer).&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;require &amp;#39;rubygems&amp;#39;
+require &amp;#39;railsless-deploy&amp;#39;
+
+set :app,               &amp;quot;somewebsite.co.nz&amp;quot;
+set :repository,        &amp;#39;git@git.dna.co.nz:somewebsite.git&amp;#39;
+set :user,              &amp;#39;&amp;#39;
+set :group,             &amp;#39;&amp;#39;
+set :ip,                &amp;#39;123.456.789.000&amp;#39;
+set :deploy_to,         &amp;quot;/srv/somewebsite.co.nz&amp;quot;
+set :scm,               &amp;#39;git&amp;#39;
+set :scm_username,      &amp;#39;git&amp;#39;
+
+role :web,  &amp;quot;#{ip}&amp;quot;
+
+load &amp;#39;cap/lib/shipistrano&amp;#39;
+
+# Specific stuff for Wordpress
+load &amp;#39;cap/lib/wordpress&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The flexibility of the helper approach is great and you can do some useful things all within the cap file simply by
+loading and executing functions from the helpers as you need. Capistrano handles the core work such as backups, rsyncing
+the code, managing dependencies like Composer, NPM modules and Ruby gems, then we&amp;#39;ve got our own helpers for managing 
+assets, database engines, htaccess rules and managing framework specific information (like rebuilding databases, 
+clearing caches), anything we feel we should automate.&lt;/p&gt;
+
+&lt;p&gt;The capfile provides a documented and standard way of interacting with our servers. Take example our &lt;code&gt;mysql&lt;/code&gt; helper. 
+This adds common support for syncing your local development and remote environments. By loading the helper&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;load &amp;#39;cap/lib/mysql&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You&amp;#39;ll get a bunch of functions like &lt;code&gt;mysql:upload&lt;/code&gt; and &lt;code&gt;mysql:download&lt;/code&gt; for syncing your databases without worrying 
+about how or where. The configuration information is stored in your Capfile, so adding helpers can be reused between 
+sites.&lt;/p&gt;
+
+&lt;p&gt;Developers can see a list of all the tasks setup for a project by running &lt;code&gt;cap -vT&lt;/code&gt; which lists the task and a 
+description.&lt;/p&gt;
+
+&lt;p&gt;On top of that you can use Capistrano namespaces directly into add in multiple environments (say a client preview) or 
+add our production workflow helper for having a &lt;code&gt;production&lt;/code&gt; release on top of your staging site. An example capfile for
+that might look like.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;require &amp;#39;rubygems&amp;#39;
+
+def setup()
+    set :repository,        &amp;#39;git@git.dna.co.nz:somewebsite.git&amp;#39;
+    set :mysql_database,    &amp;#39;somewebsite&amp;#39;
+    set :mysql_user,        &amp;#39;somewebsite&amp;#39;
+    set :mysql_ask_for_pass, true
+    set :user,              &amp;#39;somewebsite&amp;#39;
+    set :group,             &amp;#39;psaserv&amp;#39;
+
+    load &amp;#39;cap/lib/shipistrano&amp;#39;
+    load &amp;#39;cap/lib/shipistrano/helpers/production&amp;#39;
+    load &amp;#39;cap/lib/shipistrano/helpers/mysql&amp;#39;
+
+    role :web,  &amp;quot;#{ip}&amp;quot;
+    role :app,  &amp;quot;#{ip}&amp;quot;
+    role :db,   &amp;quot;#{ip}&amp;quot;, :primary =&amp;gt; true
+end
+
+task :production do
+    set :app,               &amp;quot;somewebsite.co.nz&amp;quot;
+    set :ip,                &amp;#39;123.45.67.890&amp;#39;
+    set :deploy_to,         &amp;quot;/var/www/vhosts/#{app}/httpdocs/&amp;quot;
+
+    setup()
+end
+
+task :staging do
+    set :app,               &amp;quot;staging.somewebsite.co.nz&amp;quot;
+    set :ip,                &amp;#39;123.45.67.891&amp;#39;
+    set :deploy_to,         &amp;quot;/var/www/vhosts/#{app}/httpdocs/&amp;quot;
+
+    setup()
+
+    load &amp;#39;cap/lib/shipistrano/helpers/htaccess&amp;#39;
+
+    set :auth_user,         &amp;#39;secure&amp;#39;
+    set :auth_pass,         &amp;#39;protected&amp;#39;
+    set :auth_folder,       &amp;quot;#{deploy_to}/current&amp;quot;
+
+    after(&amp;#39;deploy:update&amp;#39;, &amp;#39;htaccess:auth:protect&amp;#39;)
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we have two tasks production and staging with different configuration. You&amp;#39;ll also note the staging site has a 
+extra helper for adding HTTP Basic Auth preventing unknown outsiders from accessing the site. Because we&amp;#39;ve now got 
+namespaces setup our cap commands can target specific instances.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;cap production mysql:upload // upload to production database
+cap staging deploy // deploy to staging
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As with everything, Shipistrano is a work in progress and opinionated to how we do things. We&amp;#39;ll roll it out on more
+projects and hope to have a robust set of helpers that we can rely on being best practice, tested and useful for our 
+development team so less time spend worrying over the risks of deployment and more time building.&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2014/08/03/shipistrano</link>
+                <guid>http://labs.dna.co.nz/2014/08/03/shipistrano</guid>
+                <pubDate>2014-08-03T00:00:00+12:00</pubDate>
+        </item>
+
+        <item>
                 <title>Animation and CSS3 gradients</title>
                 <description>&lt;p&gt;In a recent project for &lt;a href=&quot;http://www.trustpower.co.nz/&quot;&gt;TrustPower&lt;/a&gt; we had a play at ways to both incorporate each of the 
 clients&amp;#39; brand colours into the primary application header.&lt;/p&gt;
@@ -139,7 +281,7 @@ animation is completed by a transition of the opacity of each layer.&lt;/p&gt;
 &lt;p&gt;Our final implementation was written in &lt;a href=&quot;http://www.lesscss.org/&quot;&gt;LESS&lt;/a&gt; and we use &lt;a href=&quot;http://lesselements.com/&quot;&gt;Elements&lt;/a&gt; 
 to consolidate cross-browser prefixes into single, concise declarations which looks something like below. &lt;/p&gt;
 
-&lt;div id=&quot;gist-8817090&quot;&gt;
+&lt;div id=&quot;gist-8817090&quot; class=&quot;gist&quot;&gt;
 &lt;script src=&quot;https://gist.github.com/wilr/8817090.js?file=&quot;&gt;&lt;/script&gt;
 &lt;noscript&gt;
 &lt;pre&gt;&amp;lt;div class=&amp;quot;demo_container&amp;quot;&amp;gt;
@@ -154,19 +296,22 @@ to consolidate cross-browser prefixes into single, concise declarations which lo
 &lt;/noscript&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Markup wise, we include each of the gradients as a DOM node. This nodes are going to be controlled through opacity
-and specific timed keyframe values to fade between the colors. As layers at the top of the stack decrease opacity, the 
-colors from gradients below for a phase, and so on through a smooth motion animation cycle of 50 seconds. At any one
-point in the 50 second animate only two of the layers in the DOM will have an opacity that is greater than zero.&lt;/p&gt;
+&lt;p&gt;Markup wise, we include each of the gradients as a DOM node. These nodes are going to be controlled through opacity
+and specific timed keyframe values to fade the opacity of each layer. As layers at the top of the stack decrease 
+opacity, the colors from gradients below for a phase, and so on through a smooth motion animation cycle of 50 seconds. 
+At any one point in the 50 second animate only two of the layers in the DOM will have an opacity that is greater than 
+zero.&lt;/p&gt;
 
 &lt;h2&gt;Finishing up&lt;/h2&gt;
 
-&lt;p&gt;Using the HTML5 Boilerplate, the HTML node has a helper class &lt;code&gt;.lte9&lt;/code&gt; for IE9 and below browsers. Looking for that class 
-we disable all gradients apart from the first one, failing back to a static image.&lt;/p&gt;
+&lt;p&gt;Using the HTML5 Boilerplate, the HTML element has a helper class &lt;code&gt;.lte9&lt;/code&gt; for IE9 and below browsers. Looking for that 
+class we can disable all gradients apart from the first one using a simple selector to fall back to a static image.&lt;/p&gt;
 
-&lt;p&gt;The other helper is the &lt;code&gt;no-animation&lt;/code&gt; class. When modifying the header DOM elements we could the animation could be
-jerky. By applying the &lt;code&gt;no-animation&lt;/code&gt; class to the container we can pause the animation on demand by adding the class
-to the parent.&lt;/p&gt;
+&lt;p&gt;The other helper the css provides is the &lt;code&gt;no-animation&lt;/code&gt; class. When modifying the header DOM elements we could the 
+animation could be jerky. By applying the &lt;code&gt;no-animation&lt;/code&gt; class to the container we can pause the animation on demand by 
+adding the class to the parent. This uses 
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state&quot;&gt;animation-play-state&lt;/a&gt; to pause the running 
+animation smoothly.&lt;/p&gt;
 </description>
                 <link>http://labs.dna.co.nz/2014/01/07/animation-and-css3-gradients</link>
                 <guid>http://labs.dna.co.nz/2014/01/07/animation-and-css3-gradients</guid>
