@@ -83,7 +83,7 @@ animation is completed by a transition of the opacity of each layer.</p>
 <p>Our final implementation was written in <a href="http://www.lesscss.org/">LESS</a> and we use <a href="http://lesselements.com/">Elements</a> 
 to consolidate cross-browser prefixes into single, concise declarations which looks something like below. </p>
 
-<div id="gist-8817090">
+<div id="gist-8817090" class="gist">
 <script src="https://gist.github.com/wilr/8817090.js?file="></script>
 <noscript>
 <pre>&lt;div class=&quot;demo_container&quot;&gt;
@@ -98,19 +98,22 @@ to consolidate cross-browser prefixes into single, concise declarations which lo
 </noscript>
 </div>
 
-<p>Markup wise, we include each of the gradients as a DOM node. This nodes are going to be controlled through opacity
-and specific timed keyframe values to fade between the colors. As layers at the top of the stack decrease opacity, the 
-colors from gradients below for a phase, and so on through a smooth motion animation cycle of 50 seconds. At any one
-point in the 50 second animate only two of the layers in the DOM will have an opacity that is greater than zero.</p>
+<p>Markup wise, we include each of the gradients as a DOM node. These nodes are going to be controlled through opacity
+and specific timed keyframe values to fade the opacity of each layer. As layers at the top of the stack decrease 
+opacity, the colors from gradients below for a phase, and so on through a smooth motion animation cycle of 50 seconds. 
+At any one point in the 50 second animate only two of the layers in the DOM will have an opacity that is greater than 
+zero.</p>
 
 <h2>Finishing up</h2>
 
-<p>Using the HTML5 Boilerplate, the HTML node has a helper class <code>.lte9</code> for IE9 and below browsers. Looking for that class 
-we disable all gradients apart from the first one, failing back to a static image.</p>
+<p>Using the HTML5 Boilerplate, the HTML element has a helper class <code>.lte9</code> for IE9 and below browsers. Looking for that 
+class we can disable all gradients apart from the first one using a simple selector to fall back to a static image.</p>
 
-<p>The other helper is the <code>no-animation</code> class. When modifying the header DOM elements we could the animation could be
-jerky. By applying the <code>no-animation</code> class to the container we can pause the animation on demand by adding the class
-to the parent.</p>
+<p>The other helper the css provides is the <code>no-animation</code> class. When modifying the header DOM elements we could the 
+animation could be jerky. By applying the <code>no-animation</code> class to the container we can pause the animation on demand by 
+adding the class to the parent. This uses 
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state">animation-play-state</a> to pause the running 
+animation smoothly.</p>
 
 </div>
 
