@@ -2,6 +2,7 @@
 layout: post
 tags : [deployment]
 title: "Deployments and Shipistrano"
+introduction: "Introducting Shipistrano, our collection of Capistrano helpers to make publishing projects as simple as lego."
 author: "wilr"
 ---
 

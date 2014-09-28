@@ -9,6 +9,7 @@
 	#header {
 		position: static;
 		padding: 30px 20px;
+		width: 100%;
 	}
 
 	.sidebar ul {

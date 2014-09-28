@@ -27,6 +27,11 @@
 
 html {
 	background: #f6f5f5 url(/assets/images/texture.png) repeat;
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -163,7 +168,7 @@ a {
 	}
 
 #header {
-	width: 220px;
+	width: 340px;
 	position: fixed;
 	padding: 40px 60px;
 }
@@ -204,7 +209,7 @@ a {
 
 #content {
 	padding: 48px 0 0 340px;
-	width: 500px;
+	width: 900px;
 }
 
 .posts {

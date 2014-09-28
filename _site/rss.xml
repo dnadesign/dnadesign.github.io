@@ -5,8 +5,8 @@
         <description>DNA Labs - </description>
         <link>http://labs.dna.co.nz</link>
         <link>http://labs.dna.co.nz</link>
-        <lastBuildDate>2014-09-22T22:31:54+12:00</lastBuildDate>
-        <pubDate>2014-09-22T22:31:54+12:00</pubDate>
+        <lastBuildDate>2014-09-28T20:03:01+13:00</lastBuildDate>
+        <pubDate>2014-09-28T20:03:01+13:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -320,23 +320,16 @@ animation smoothly.&lt;/p&gt;
 
         <item>
                 <title>puts "Hello World"</title>
-                <description>&lt;p&gt;Welcome to labs.dna.co.nz, a collection of showcases, code snippets, how-tos and
-general geekery from myself (&lt;a href=&quot;http://twitter.com/wilr&quot;&gt;@wilr&lt;/a&gt;), John
-(&lt;a href=&quot;http://twitter.com/pitchandtone&quot;&gt;@pitchandtone&lt;/a&gt;) and the rest of the
+                <description>&lt;p&gt;Welcome to labs.dna.co.nz, a collection of showcases, code snippets, how-tos and general geekery from myself 
+(&lt;a href=&quot;http://twitter.com/wilr&quot;&gt;@wilr&lt;/a&gt;), John (&lt;a href=&quot;http://twitter.com/pitchandtone&quot;&gt;@pitchandtone&lt;/a&gt;) and the rest of the
 &lt;a href=&quot;http://dna.co.nz&quot;&gt;DNA&lt;/a&gt; dev team.&lt;/p&gt;
 
-&lt;p&gt;We set this little blog up so that we could share our insights and some of the
-neat and exciting stuff that we experiment and deploy for our clients.&lt;/p&gt;
+&lt;p&gt;We set this little blog (&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;) up so that we could share our insights and the neat, 
+exciting stuff that we get to experiment with and deploy for our clients.&lt;/p&gt;
 
-&lt;p&gt;Whether it&amp;#39;s prototyping UX interactions, scaling infrastructure, application
-design, front end engineering patterns or even project management, we tackle a
-lot of interesting and diverse challenges. Most of which is kept behind the
-scenes, discussed in the dark corners of the office because frankly, the
-design team just want their grid followed, this thing to swoosh over to
-fade into this and the logo bigger.&lt;/p&gt;
-
-&lt;p&gt;But like an iceberg, the bulk of the power (and potential for trouble) lies
-below the surface.&lt;/p&gt;
+&lt;p&gt;Whether it&amp;#39;s prototyping UX interactions, scaling infrastructure, application design, front end engineering patterns 
+or even project management, we tackle a lot of interesting and diverse challenges during our day at DNA and it&amp;#39;s about
+time we share some of those opinions.&lt;/p&gt;
 </description>
                 <link>http://labs.dna.co.nz/2013/04/04/puts-hello-world</link>
                 <guid>http://labs.dna.co.nz/2013/04/04/puts-hello-world</guid>

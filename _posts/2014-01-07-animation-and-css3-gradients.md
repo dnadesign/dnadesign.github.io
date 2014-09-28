@@ -3,6 +3,7 @@ layout: post
 tags : [css]
 title: "Animation and CSS3 gradients"
 author: "wilr"
+introduction: "CSS3 gets me far too excited."
 ---
 
 In a recent project for [TrustPower](http://www.trustpower.co.nz/) we had a play at ways to both incorporate each of the 

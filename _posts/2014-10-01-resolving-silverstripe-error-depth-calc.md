@@ -2,6 +2,7 @@
 layout: post
 tags : [silverstripe]
 title: "Resolving SilverStripe Error 'Hmm - depth calc wrong'"
+introduction: "Hint: You're wrong."
 author: "wilr"
 ---
 

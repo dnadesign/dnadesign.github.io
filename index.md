@@ -25,8 +25,3 @@ title: Welcome
 	{% endfor %}
 </ul>
 
-<footer class="content-footer">
-	<p>You&#39;ve reached the end. Would you like to go back to the <a href="#top">top</a>?</p>
-	<p>Haven&#39;t read enough about DNA? Try <a href="http://dna.co.nz">dna.co.nz</a>.</p>
-	<p>We&#39;re hiring <a href="http://dna.co.nz/careers/">front end developers</a>. Come work with us.</p>
-</footer>
