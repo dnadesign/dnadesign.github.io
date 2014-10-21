@@ -59,7 +59,7 @@
 <div class="post-content">
 	<p>While developing with SilverStripe 3 you may run into an error which looks 
 something like:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Fatal error: Hmm - depth calc wrong, hit negatives, see: app/code/MyClass.php in ConfigStaticManifest.php on line 240
+<div class="highlight"><pre><code class="language-text" data-lang="text">Fatal error: Hmm - depth calc wrong, hit negatives, see: app/code/MyClass.php in ConfigStaticManifest.php on line 240
 </code></pre></div>
 <p>While this error may seem confusing, resolving it usually is as straightforward
 as resolving a normal syntax error in the mentioned file.</p>
@@ -75,7 +75,7 @@ message. In our error message from above, that file is <code>app/code/MyClass.ph
 
 <p>You can then use the PHP CLI binary to syntax check that particular file and 
 track down the syntax error in question</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">php -l app/code/MyClass.php
+<div class="highlight"><pre><code class="language-text" data-lang="text">php -l app/code/MyClass.php
 
 PHP Parse error:  syntax error, unexpected &#39;return&#39; (T_RETURN), expecting function (T_FUNCTION) in app/code/MyClass.php on line 459
 

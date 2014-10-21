@@ -5,16 +5,46 @@
         <description>DNA Labs - </description>
         <link>http://labs.dna.co.nz</link>
         <link>http://labs.dna.co.nz</link>
-        <lastBuildDate>2014-09-28T20:03:01+13:00</lastBuildDate>
-        <pubDate>2014-09-28T20:03:01+13:00</pubDate>
+        <lastBuildDate>2014-10-21T15:47:51+13:00</lastBuildDate>
+        <pubDate>2014-10-21T15:47:51+13:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Using facebook debug with local projects</title>
+                <description>&lt;p&gt;Recently we&amp;#39;ve been working on a project that includes facebook integration. Facebook have handily provided a debugging tool to aid in this at &lt;a href=&quot;https://developers.facebook.com/tools/debug/&quot;&gt;https://developers.facebook.com/tools/debug/&lt;/a&gt; though it can slow down debugging if you have to deploy to a public staging server before testing your changes, instead of the usual web development process with live reload on a local developer workstation. Here&amp;#39;s how to make that work with your local instance of a project.&lt;/p&gt;
+
+&lt;p&gt;Our developer machines at DNA are setup via &lt;a href=&quot;https://github.com/dnadesign/sprout-wrap&quot;&gt;our own sprout-wrap recipes&lt;/a&gt;, which is a collection of chef cookbooks that installs and configures the needed software on each machine. This setup provides for us, among other things: dnamasq mapping &lt;code&gt;*.dev&lt;/code&gt; to localhost, and apache configured to serve projects from &lt;code&gt;~/Sites/my_project&lt;/code&gt; from &lt;code&gt;http://my_project.dev&lt;/code&gt; on the local workstation.&lt;/p&gt;
+
+&lt;p&gt;Since workstations don&amp;#39;t have an exposed IP address there&amp;#39;s two main ways to make a service externally accessible: either by changing your firewall/router to port forward a specific port to your local IP address - though there are a variety of reasons that can make this difficult. Either inability to change those settings at a large organisation, firewall restrictions on non-standard ports or having a dynamic local IP address through DHCP and more. The easier to set up option that we went with, is to use an externally available service and a local proxy such as &lt;code&gt;proxylocal&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Proxylocal consists of a publicly available, free service on proxylocal.com, and a &lt;a href=&quot;http://rubygems.org/gems/proxylocal&quot;&gt;ruby gem&lt;/a&gt; which sets up a unique subdomain on the service, and maps traffic to a local port on your machine. So running &lt;code&gt;gem install proxylocal&lt;/code&gt; and then &lt;code&gt;proxylocal 3000&lt;/code&gt; will create a subdomain e.g. &lt;code&gt;http://0h7d.t.proxylocal.com/&lt;/code&gt; which maps to your local machine!&lt;/p&gt;
+
+&lt;p&gt;The final step in the puzzle, was since our local apache instance uses hostnames to detect which site to load, all listening on the same port - we had to add an extra config to get the site we want to debug listening on it&amp;#39;s own port. For us, the apache config needed to add for that is:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Listen 3000
+&amp;lt;VirtualHost *:3000&amp;gt;
+    ServerName dev
+    ServerAlias my_project.dev
+    VirtualDocumentRoot &amp;quot;/Users/jeremy.olliver/Sites/my_project&amp;quot;
+
+    php_admin_value auto_prepend_file /Users/jeremy.olliver/Sites/tools/php.prepend.php
+    php_admin_value auto_append_file /Users/jeremy.olliver/Sites/tools/php.append.php
+&amp;lt;/Virtualhost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which is essentially the same VirtualHost config as we usually run, modified to listen on port 3000, and hardcoded to the project&amp;#39;s directory. So after that, restart apache, and enter the URL specified by proxylocal (e.g. &lt;code&gt;http://0h7d.t.proxylocal.com/&lt;/code&gt;) into Facebook&amp;#39;s debug tool, and away you go.&lt;/p&gt;
+
+&lt;p&gt;Happy Hacking&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2014/10/21/using-facebook-debug-with-local-projects</link>
+                <guid>http://labs.dna.co.nz/2014/10/21/using-facebook-debug-with-local-projects</guid>
+                <pubDate>2014-10-21T00:00:00+13:00</pubDate>
+        </item>
 
         <item>
                 <title>Resolving SilverStripe Error 'Hmm - depth calc wrong'</title>
                 <description>&lt;p&gt;While developing with SilverStripe 3 you may run into an error which looks 
 something like:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Fatal error: Hmm - depth calc wrong, hit negatives, see: app/code/MyClass.php in ConfigStaticManifest.php on line 240
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Fatal error: Hmm - depth calc wrong, hit negatives, see: app/code/MyClass.php in ConfigStaticManifest.php on line 240
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;While this error may seem confusing, resolving it usually is as straightforward
 as resolving a normal syntax error in the mentioned file.&lt;/p&gt;
@@ -30,7 +60,7 @@ message. In our error message from above, that file is &lt;code&gt;app/code/MyCl
 
 &lt;p&gt;You can then use the PHP CLI binary to syntax check that particular file and 
 track down the syntax error in question&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;php -l app/code/MyClass.php
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;php -l app/code/MyClass.php
 
 PHP Parse error:  syntax error, unexpected &amp;#39;return&amp;#39; (T_RETURN), expecting function (T_FUNCTION) in app/code/MyClass.php on line 459
 
@@ -139,14 +169,14 @@ for the particular site is kept in the top level &lt;code&gt;Capfile&lt;/code&gt
 Shipstrano repository.&lt;/p&gt;
 
 &lt;p&gt;Going back to the Wordpress example, the project developer would add Shipstrano..&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;cd ~/Sites/project
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cd ~/Sites/project
 git submodule add git@github.com:dnadesign/shipistrano.git cap
 git submodule sync
 git submodule init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then create a Capfile in the root of the project loading the helpers they want along with declaring the normal 
 Capistrano configuration (note we still use v2, upgrading to v3 would make this much nicer).&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;require &amp;#39;rubygems&amp;#39;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;require &amp;#39;rubygems&amp;#39;
 require &amp;#39;railsless-deploy&amp;#39;
 
 set :app,               &amp;quot;somewebsite.co.nz&amp;quot;
@@ -173,7 +203,7 @@ clearing caches), anything we feel we should automate.&lt;/p&gt;
 
 &lt;p&gt;The capfile provides a documented and standard way of interacting with our servers. Take example our &lt;code&gt;mysql&lt;/code&gt; helper. 
 This adds common support for syncing your local development and remote environments. By loading the helper&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;load &amp;#39;cap/lib/mysql&amp;#39;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;load &amp;#39;cap/lib/mysql&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You&amp;#39;ll get a bunch of functions like &lt;code&gt;mysql:upload&lt;/code&gt; and &lt;code&gt;mysql:download&lt;/code&gt; for syncing your databases without worrying 
 about how or where. The configuration information is stored in your Capfile, so adding helpers can be reused between 
@@ -185,7 +215,7 @@ description.&lt;/p&gt;
 &lt;p&gt;On top of that you can use Capistrano namespaces directly into add in multiple environments (say a client preview) or 
 add our production workflow helper for having a &lt;code&gt;production&lt;/code&gt; release on top of your staging site. An example capfile for
 that might look like.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;require &amp;#39;rubygems&amp;#39;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;require &amp;#39;rubygems&amp;#39;
 
 def setup()
     set :repository,        &amp;#39;git@git.dna.co.nz:somewebsite.git&amp;#39;
@@ -231,7 +261,7 @@ end
 &lt;p&gt;Now we have two tasks production and staging with different configuration. You&amp;#39;ll also note the staging site has a 
 extra helper for adding HTTP Basic Auth preventing unknown outsiders from accessing the site. Because we&amp;#39;ve now got 
 namespaces setup our cap commands can target specific instances.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;cap production mysql:upload // upload to production database
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cap production mysql:upload // upload to production database
 cap staging deploy // deploy to staging
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;As with everything, Shipistrano is a work in progress and opinionated to how we do things. We&amp;#39;ll roll it out on more

@@ -93,14 +93,14 @@ for the particular site is kept in the top level <code>Capfile</code> while all 
 Shipstrano repository.</p>
 
 <p>Going back to the Wordpress example, the project developer would add Shipstrano..</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cd ~/Sites/project
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd ~/Sites/project
 git submodule add git@github.com:dnadesign/shipistrano.git cap
 git submodule sync
 git submodule init
 </code></pre></div>
 <p>Then create a Capfile in the root of the project loading the helpers they want along with declaring the normal 
 Capistrano configuration (note we still use v2, upgrading to v3 would make this much nicer).</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">require &#39;rubygems&#39;
+<div class="highlight"><pre><code class="language-text" data-lang="text">require &#39;rubygems&#39;
 require &#39;railsless-deploy&#39;
 
 set :app,               &quot;somewebsite.co.nz&quot;
@@ -127,7 +127,7 @@ clearing caches), anything we feel we should automate.</p>
 
 <p>The capfile provides a documented and standard way of interacting with our servers. Take example our <code>mysql</code> helper. 
 This adds common support for syncing your local development and remote environments. By loading the helper</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">load &#39;cap/lib/mysql&#39;
+<div class="highlight"><pre><code class="language-text" data-lang="text">load &#39;cap/lib/mysql&#39;
 </code></pre></div>
 <p>You&#39;ll get a bunch of functions like <code>mysql:upload</code> and <code>mysql:download</code> for syncing your databases without worrying 
 about how or where. The configuration information is stored in your Capfile, so adding helpers can be reused between 
@@ -139,7 +139,7 @@ description.</p>
 <p>On top of that you can use Capistrano namespaces directly into add in multiple environments (say a client preview) or 
 add our production workflow helper for having a <code>production</code> release on top of your staging site. An example capfile for
 that might look like.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">require &#39;rubygems&#39;
+<div class="highlight"><pre><code class="language-text" data-lang="text">require &#39;rubygems&#39;
 
 def setup()
     set :repository,        &#39;git@git.dna.co.nz:somewebsite.git&#39;
@@ -185,7 +185,7 @@ end
 <p>Now we have two tasks production and staging with different configuration. You&#39;ll also note the staging site has a 
 extra helper for adding HTTP Basic Auth preventing unknown outsiders from accessing the site. Because we&#39;ve now got 
 namespaces setup our cap commands can target specific instances.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cap production mysql:upload // upload to production database
+<div class="highlight"><pre><code class="language-text" data-lang="text">cap production mysql:upload // upload to production database
 cap staging deploy // deploy to staging
 </code></pre></div>
 <p>As with everything, Shipistrano is a work in progress and opinionated to how we do things. We&#39;ll roll it out on more
