@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Using facebook debug with local projects / Labs / DNA Designed Communications</title>
+		
+
+		<!-- Enable responsive viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/assets/css/mobile.css" rel="stylesheet" type="text/css" media="all">
+		<link href="/assets/demos/demos.css" rel="stylesheet" type="text/css" media="all">
+		
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+		<link href="http://fonts.googleapis.com/css?family=Inconsolata:400" rel="stylesheet" type="text/css">
+		<link href="rss.xml" type="application/rss+xml" rel="alternate" title="labs.dna.co.nz RSS Feed">
+
+	</head>
+
+	<body>
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2595529-27', 'auto');
+  ga('send', 'pageview');
+</script>
+
+		<header id="header">
+			<div class="sidebar">
+				<a href="/" class="logo"><img class="png-fix" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAkBAMAAAAdh/vEAAAAMFBMVEX///8rKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKyum1zVnAAAAD3RSTlMAESIzRFVmd4iZqrvM3e5GKvWZAAABqUlEQVQ4y5XUTWrCQBQA4GeMomAxB6iQA5Tiplt1IaVLb2B6gx4hUCgBoW5Kt9oTmKUgRXoC216gi9J1xJb6E+PrvMlMnBRFZzbDvMzHy3szCYDOMF3QG8WpJmhrgmzg64HzTVVrf2bym9MCJXQKlg7obkZ3On3NIq4vXnUOYW3DmU5fy9EYcQrIR/jIqzmJVzhsyV25jgi5UKdpCmMRWNqUVSwwcsT+DxlpQP2rWR30YSAjC/a8IBcY8oyZHm5B+brzzKZuEnpSAb4QON2uWforxBUoYJUCKwI9FZi32eBNBawuBbDkkEMVwE2N7hKBh0te+oyDyPMmtPJF00LPEyATfEIMXDADahQHIUtOvflm159ejXVPgCI6CYAaBW0BoMLmeVxCHxJQnsMW5CnoSJCPq6a0lgJ8BQC9hSsBbYnAkM0SoNRSAc1+AoiDKY5TAgP2A+oa76oK4BDgTR6xsROka0iAenApYKa6dASopM7hMDAmfOux4N24p9jP0SB1W9Ng2WRjD1hbO8Duc0i+MS2wsPRA2AAFtCWY7QND/iNPQCGIwcb5D/4AB0XS94mp5eAAAAAASUVORK5CYII=" alt="DNA - Designing Customer Experience"></a>
+
+				<p class="tagline">At DNA we define and design experiences. On <strong>labs.dna.co.nz</strong>, we discuss the technical side of those experiences.</p>
+
+				<ul>
+					<li><a href="/">labs.dna.co.nz/</a></li>
+					<li><a href="http://github.com/dnadesign">github.com/dnadesign</a></li>
+					<li><a href="http://twitter.com/dna_nz">twitter.com/DNA_NZ</a></li>
+
+				</ul>
+				<p class="copyright">&copy; DNA Designed Communications 2014. Wellington &amp; Auckland, Aotearoa.
+				</p>
+			</div>
+		</header>
+
+		<div id="content" role="main">
+			<h1>Using facebook debug with local projects </h1>
+
+<div class="post-content">
+	<p>Recently we&#39;ve been working on a project that includes facebook integration. Facebook have handily provided a debugging tool to aid in this at <a href="https://developers.facebook.com/tools/debug/">https://developers.facebook.com/tools/debug/</a> though it can slow down debugging if you have to deploy to a public staging server before testing your changes, instead of the usual web development process with live reload on a local developer workstation. Here&#39;s how to make that work with your local instance of a project.</p>
+
+<p>Our developer machines at DNA are setup via <a href="https://github.com/dnadesign/sprout-wrap">our own sprout-wrap recipes</a>, which is a collection of chef cookbooks that installs and configures the needed software on each machine. This setup provides for us, among other things: dnamasq mapping <code>*.dev</code> to localhost, and apache configured to serve projects from <code>~/Sites/my_project</code> from <code>http://my_project.dev</code> on the local workstation.</p>
+
+<p>Since workstations don&#39;t have an exposed IP address there&#39;s two main ways to make a service externally accessible: either by changing your firewall/router to port forward a specific port to your local IP address - though there are a variety of reasons that can make this difficult. Either inability to change those settings at a large organisation, firewall restrictions on non-standard ports or having a dynamic local IP address through DHCP and more. The easier to set up option that we went with, is to use an externally available service and a local proxy such as <code>proxylocal</code>.</p>
+
+<p>Proxylocal consists of a publicly available, free service on proxylocal.com, and a <a href="http://rubygems.org/gems/proxylocal">ruby gem</a> which sets up a unique subdomain on the service, and maps traffic to a local port on your machine. So running <code>gem install proxylocal</code> and then <code>proxylocal 3000</code> will create a subdomain e.g. <code>http://0h7d.t.proxylocal.com/</code> which maps to your local machine!</p>
+
+<p>The final step in the puzzle, was since our local apache instance uses hostnames to detect which site to load, all listening on the same port - we had to add an extra config to get the site we want to debug listening on it&#39;s own port. For us, the apache config needed to add for that is:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Listen 3000
+&lt;VirtualHost *:3000&gt;
+    ServerName dev
+    ServerAlias my_project.dev
+    VirtualDocumentRoot &quot;/Users/jeremy.olliver/Sites/my_project&quot;
+
+    php_admin_value auto_prepend_file /Users/jeremy.olliver/Sites/tools/php.prepend.php
+    php_admin_value auto_append_file /Users/jeremy.olliver/Sites/tools/php.append.php
+&lt;/Virtualhost&gt;
+</code></pre></div>
+<p>Which is essentially the same VirtualHost config as we usually run, modified to listen on port 3000, and hardcoded to the project&#39;s directory. So after that, restart apache, and enter the URL specified by proxylocal (e.g. <code>http://0h7d.t.proxylocal.com/</code>) into Facebook&#39;s debug tool, and away you go.</p>
+
+<p>Happy Hacking</p>
+
+</div>
+
+<footer class="post-footer">
+	<p class="date"> by <a href="http://twitter.com/jeremyolliver/">@jeremyolliver</a> on 21.10.2014</p>
+</footer>
+
+<h2>Comments</h2>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'dnalabs'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>		
+			
+			<footer class="content-footer">
+				<p>You&#39;ve reached the end. Would you like to go back to the <a href="#top">top</a>?</p>
+				<p>Haven&#39;t read enough about DNA? Try <a href="http://dna.co.nz">dna.co.nz</a>.</p>
+				<p>We&#39;re hiring <a href="http://dna.co.nz/careers/">front end developers</a>. Come work with us.</p>
+			</footer>
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="assets/javascript/dna.js"></script>
+	</body>
+</html>
