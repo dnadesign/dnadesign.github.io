@@ -5,10 +5,58 @@
         <description>DNA Labs - </description>
         <link>http://labs.dna.co.nz</link>
         <link>http://labs.dna.co.nz</link>
-        <lastBuildDate>2014-10-21T15:47:51+13:00</lastBuildDate>
-        <pubDate>2014-10-21T15:47:51+13:00</pubDate>
+        <lastBuildDate>2015-07-31T11:24:49+12:00</lastBuildDate>
+        <pubDate>2015-07-31T11:24:49+12:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Exporting SVG from Illustrator for Developers</title>
+                <description>&lt;p&gt;One of the biggest changes in my role as a front end developer in the last few years has been the destruction of the 
+concept of designing a 960px static site, laying it out pixel by pixel from a Photoshop file. &lt;/p&gt;
+
+&lt;p&gt;Nowadays in a world surrounded by mobile devices things are getting smaller. Though at the same time, we&amp;#39;re going the 
+other way,  adoption of wide screens is wider spread. Higher resolutions and better monitor are now cheaper and more 
+available. Long gone is the traditional normal distribution.&lt;/p&gt;
+
+&lt;p&gt;For the majority of our sites, Scalable Vector Graphics &lt;em&gt;(SVG)&lt;/em&gt; has become the default format for icons and UI interface 
+elements. They scale up, down, round. As a developer they are a life saver. A single image can be 32x32 on mobile. 64x64
+on a high resolution, 96x96 when the users on a desktop. All from a single image file. I can color it, animate it, tweak
+it, anything I want without touching static assets.&lt;/p&gt;
+
+&lt;p&gt;Here are some tips I&amp;#39;ve found in Illustrator to make preparing SVGs easier.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Fit SVG to artboard&lt;/strong&gt; Ensure that your exported asset does not have whitespace around the outside. This will cause 
+it to not be positioned correctly. CS5+ has a great feature to make this easy. Under &lt;strong&gt;Object&lt;/strong&gt; &amp;gt; &lt;strong&gt;Artboards&lt;/strong&gt; select 
+&lt;strong&gt;Fit to Artwork Bounds&lt;/strong&gt;. This will output a tight fit and is great to pick up any random artifacts that may have 
+may have made it into your image&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Don&amp;#39;t use &lt;strong&gt;Multiply&lt;/strong&gt; as an overlay option. Very common with designers, investigate any shadows and overlays to make sure
+they use a simple color and opacity.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When it comes to the SVG save dialog, make sure you save the image with &lt;strong&gt;More Options&lt;/strong&gt; dialog box open. These 
+options are critical to exporting. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Save as &lt;strong&gt;SVG 1.1&lt;/strong&gt;. That is the only W3C Specification worth using.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Always untick &lt;strong&gt;Preserve Illustrator Capabilities&lt;/strong&gt;. This option will output large SVGs which you do not want to use. 
+Optionally store an editable version alongside the other export but I&amp;#39;ve found that even with that option disabled, most
+simple UI elements continue to be editable.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I never use &lt;strong&gt;Subsetting&lt;/strong&gt; (i.e I leave it as none). Unless you want your text un-editable. Leave it as none. Then 
+styling of text can be done via CSS.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Don&amp;#39;t use style Element option&lt;/strong&gt;. Under &lt;em&gt;CSS Properties&lt;/em&gt; ensure you select &lt;strong&gt;Presentation Attributes&lt;/strong&gt; or 
+&lt;strong&gt;Style Attributes&lt;/strong&gt;. Using the style element option will generate a CSS style element at the root of the SVG file. When 
+including multiple SVGs on the page you&amp;#39;ll find styles leak between your images. Fixing this by hand is a laborious 
+process best avoided.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ensure &lt;strong&gt;Responsive&lt;/strong&gt; option is ticked. This allows the image to be scaled on demand. In our case we use CSS &lt;code&gt;width&lt;/code&gt;,
+&lt;code&gt;height&lt;/code&gt; and &lt;code&gt;background-size&lt;/code&gt; options to size images correctly.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SVG&amp;#39;s are not supported by IE8, several Android 2 devices and generally older devices. I still recommend using 
+fallbacks at this stage depending on importance of the feature.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Adobe have published a thorough guide to exporting SVG&amp;#39;s on its&amp;#39; blog which is well worth the read. &lt;a href=&quot;http://www.adobe.com/inspire/2013/09/exporting-svg-illustrator.html&quot;&gt;Exporting SVG for the web with Adobe Illustrator CC&lt;/a&gt;.&lt;/p&gt;
+</description>
+                <link>http://labs.dna.co.nz/2015/07/31/exporting-svgs</link>
+                <guid>http://labs.dna.co.nz/2015/07/31/exporting-svgs</guid>
+                <pubDate>2015-07-31T00:00:00+12:00</pubDate>
+        </item>
 
         <item>
                 <title>Using facebook debug with local projects</title>
